@@ -41,7 +41,11 @@ func New(appName, appOwner string, cfgs ...Configurator) *Bootstrapper {
 
 // SetupViews loads the templates.
 func (b *Bootstrapper) SetupViews(viewsDir string) {
-	b.RegisterView(iris.HTML(viewsDir, ".html").Layout("shared/layout.html"))
+	htmlEngine := iris.HTML(viewsDir, ".html").Layout("shared/layout.html")
+	// 每次重新加载模板（线上关闭它，影响性能）
+	htmlEngine.Reload(false)
+	b.RegisterView(htmlEngine)
+
 }
 
 // SetupSessions initializes the sessions, optionally.

@@ -16,7 +16,8 @@ type IndexController struct {
 
 func (c *IndexController) Get() mvc.Result {
 	datalist := c.Service.GetAll()
-
+	// var datalist []models.StarInfo
+	// return mvc.Response{Text: "ok\n"}
 	return mvc.View{
 		Name: "index.html",
 		Data: iris.Map{
