@@ -37,7 +37,7 @@ func (c *IndexController) GetBy(id int) mvc.Result {
 		Name: "info.html",
 		Data: iris.Map{
 			"Title": "球星库",
-			"Data":  data,
+			"info":  data,
 		},
 	}
 }
