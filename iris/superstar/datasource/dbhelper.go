@@ -56,7 +56,7 @@ func InstanceSlave() *xorm.Engine {
 	c := conf.SlaveDbConfig
 	connet := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", c.User, c.Pwd, c.Host, c.Port, c.DbName)
 	engine, err := xorm.NewEngine(conf.DriverName, connet)
-	// 增加缓存，增加数据库依赖，影响性能
+	// 增加缓存，减少数据库依赖，影响性能
 	cacher := xorm.NewLRUCacher(xorm.NewMemoryStore(), 1000)
 	engine.SetDefaultCacher(cacher)
 

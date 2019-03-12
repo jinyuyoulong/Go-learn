@@ -3,7 +3,11 @@
 package controllers
 
 import (
+	"log"
+
 	"github.com/kataras/iris/mvc"
+	"v5u.win/golearn/iris/superstar/datasource"
+	"v5u.win/golearn/iris/superstar/models"
 	"v5u.win/golearn/iris/superstar/services"
 
 	"github.com/kataras/iris"
@@ -52,5 +56,17 @@ func (c *IndexController) GetSearch() mvc.Result {
 			"Title":    "球星库",
 			"Datalist": datalist,
 		},
+	}
+}
+
+// 手动清除缓存
+func (c *IndexController) GetClearcache() mvc.Result {
+	err := datasource.InstanceMaster().ClearCache(&models.StarInfo{})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return mvc.Response{
+		Text: "xorm 缓存清除成功",
 	}
 }
