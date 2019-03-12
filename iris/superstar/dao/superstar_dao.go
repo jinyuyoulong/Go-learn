@@ -1,4 +1,4 @@
-package repositories
+package dao
 
 // data access object，DAO
 import (
@@ -54,9 +54,10 @@ func (s *SuperstarDao) Search(country string) []models.StarInfo {
 }
 
 func (s *SuperstarDao) Delete(id int) error {
+	// 假删除
 	data := &models.StarInfo{Id: id, SysStatus: 1}
 	_, err := s.engine.Id(data.Id).Update(data)
-	// 假删除
+
 	return err
 }
 

@@ -1,5 +1,7 @@
 package datasource
 
+// 初始化 engine ，创建单例
+
 import (
 	"fmt"
 	"log"
