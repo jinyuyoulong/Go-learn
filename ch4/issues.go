@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"v5u.win/GoLearn/ch4/github"
+	"v5u.win/golearn/ch4/github"
 )
 
 func main() {

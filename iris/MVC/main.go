@@ -3,11 +3,11 @@ package main
 import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"v5u.win/GoLearn/iris/MVC/datasource"
-	"v5u.win/GoLearn/iris/MVC/repositories"
-	"v5u.win/GoLearn/iris/MVC/services"
-	"v5u.win/GoLearn/iris/MVC/web/middleware"
-	"v5u.win/Golearn/iris/MVC/web/controllers"
+	"v5u.win/golearn/iris/MVC/datasource"
+	"v5u.win/golearn/iris/MVC/repositories"
+	"v5u.win/golearn/iris/MVC/services"
+	"v5u.win/golearn/iris/MVC/web/middleware"
+	"v5u.win/golearn/iris/MVC/web/controllers"
 )
 
 func main() {

@@ -6,7 +6,7 @@ import (
 	"os"
 	"strconv"
 
-	"v5u.win/GoLearn/tempconv"
+	"v5u.win/golearn/tempconv"
 )
 
 func main() {

@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/go-xorm/xorm"
-	"v5u.win/GoLearn/iris/superstar/models"
+	"v5u.win/golearn/iris/superstar/models"
 )
 
 type SuperstarDao struct {
@@ -43,16 +43,6 @@ func (s *SuperstarDao) GetAll() []models.StarInfo {
 	return datalist
 }
 
-func (s *SuperstarDao) Search(country string) []models.StarInfo {
-	datalist := []models.StarInfo{}
-	err := s.engine.Where("country=?", country).Desc("id").Find(&datalist)
-	if err != nil {
-		log.Println(err)
-		return datalist
-	}
-	return datalist
-}
-
 func (s *SuperstarDao) Delete(id int) error {
 	// 假删除
 	data := &models.StarInfo{Id: id, SysStatus: 1}
@@ -71,4 +61,14 @@ func (s *SuperstarDao) Update(data *models.StarInfo, columns []string) error {
 func (s *SuperstarDao) Create(data *models.StarInfo) error {
 	_, err := s.engine.Insert(data)
 	return err
+}
+
+func (s *SuperstarDao) Search(country string) []models.StarInfo {
+	datalist := []models.StarInfo{}
+	err := s.engine.Where("country=?", country).Desc("id").Find(&datalist)
+	if err != nil {
+		log.Println(err)
+		return datalist
+	}
+	return datalist
 }

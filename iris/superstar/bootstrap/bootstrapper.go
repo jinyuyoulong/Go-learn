@@ -87,7 +87,11 @@ func (b *Bootstrapper) SetupErrorHandlers() {
 
 const (
 	// StaticAssets is the root directory for public assets like images, css, js.
+
+	// go run in ./web 与 main.go 同目录 ./public/ <==> ./web/public/
+	// but go run not in ./web 则./public/ <==> 当前目录下的 public/
 	StaticAssets = "./public/"
+
 	// Favicon is the relative 9to the "StaticAssets") favicon path for our app.
 	Favicon = "favicon.ico"
 )
@@ -103,6 +107,8 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 //
 // Returns itself.
 func (b *Bootstrapper) Bootstrap() *Bootstrapper {
+	// b.SetupViews("./golearn/iris/superstar/web/views")
+	// go run in ./web 与 main.go
 	b.SetupViews("./views")
 	b.SetupSessions(24*time.Hour,
 		[]byte("the-big-and-secret-fash-key-here"),

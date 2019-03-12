@@ -7,8 +7,9 @@ import (
 	"log"
 	"sync"
 
+	_ "github.com/go-sql-driver/mysql" // 使用MySQL的隐式驱动
 	"github.com/go-xorm/xorm"
-	"v5u.win/GoLearn/iris/superstar/conf"
+	"v5u.win/golearn/iris/superstar/conf"
 )
 
 var (
@@ -17,7 +18,7 @@ var (
 	lock         sync.Mutex
 )
 
-func instanceMaster() *xorm.Engine {
+func InstanceMaster() *xorm.Engine {
 
 	if masterEngine != nil {
 		return masterEngine
@@ -41,7 +42,7 @@ func instanceMaster() *xorm.Engine {
 	return masterEngine
 }
 
-func instanceSlave() *xorm.Engine {
+func InstanceSlave() *xorm.Engine {
 	if slaveEngine != nil {
 		return slaveEngine
 	}

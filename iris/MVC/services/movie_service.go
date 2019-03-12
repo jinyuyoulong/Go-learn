@@ -1,8 +1,8 @@
 package services
 
 import (
-	"v5u.win/GoLearn/iris/MVC/datamodels"
-	"v5u.win/GoLearn/iris/MVC/repositories"
+	"v5u.win/golearn/iris/MVC/datamodels"
+	"v5u.win/golearn/iris/MVC/repositories"
 )
 
 // MovieService处理电影数据模型的一些CRUID操作。

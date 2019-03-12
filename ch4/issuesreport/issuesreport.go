@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"v5u.win/Golearn/ch4/github"
+	"v5u.win/golearn/ch4/github"
 )
 
 // 定义模板显示格式

@@ -1,14 +1,15 @@
 package main
 
 import (
-	"github.com/kataras/iris/_examples/structuring/bootstrap/bootstrap"
-	"github.com/kataras/iris/_examples/structuring/bootstrap/middleware/identity"
-	"github.com/kataras/iris/_examples/structuring/bootstrap/routes"
+	"v5u.win/golearn/iris/superstar/bootstrap"
+	"v5u.win/golearn/iris/superstar/web/middleware/identity"
+	"v5u.win/golearn/iris/superstar/web/routes"
 )
 
 func newApp() *bootstrap.Bootstrapper {
-	app := bootstrap.New("Awesome App", "kataras2006@hotmail.com")
+	app := bootstrap.New("Superstar database", "fanjinlong")
 	app.Bootstrap()
+	// 设置identity 为全局中间件
 	app.Configure(identity.Configure, routes.Configure)
 	return app
 }

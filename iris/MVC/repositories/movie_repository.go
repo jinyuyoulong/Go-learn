@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sync"
 
-	"v5u.win/GoLearn/iris/MVC/datamodels"
+	"v5u.win/golearn/iris/MVC/datamodels"
 )
 
 type Query func(datamodels.Movie) bool

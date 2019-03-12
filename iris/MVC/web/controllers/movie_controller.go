@@ -4,8 +4,8 @@ import (
 	"errors"
 
 	"github.com/kataras/iris"
-	"v5u.win/GoLearn/iris/MVC/datamodels"
-	"v5u.win/GoLearn/iris/MVC/services"
+	"v5u.win/golearn/iris/MVC/datamodels"
+	"v5u.win/golearn/iris/MVC/services"
 )
 
 // MovieController

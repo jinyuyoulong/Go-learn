@@ -1,11 +1,13 @@
 package identity
 
+// 中间件中的 identity 配置全局的变量
+
 import (
 	"time"
 
 	"github.com/kataras/iris"
 
-	"github.com/kataras/iris/_examples/structuring/bootstrap/bootstrap"
+	"v5u.win/golearn/iris/superstar/bootstrap"
 )
 
 // New returns a new handler which adds some headers and view data

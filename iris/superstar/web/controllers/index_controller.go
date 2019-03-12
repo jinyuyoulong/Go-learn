@@ -4,7 +4,7 @@ package controllers
 
 import (
 	"github.com/kataras/iris/mvc"
-	"v5u.win/GoLearn/iris/superstar/services"
+	"v5u.win/golearn/iris/superstar/services"
 
 	"github.com/kataras/iris"
 )
@@ -15,16 +15,41 @@ type IndexController struct {
 }
 
 func (c *IndexController) Get() mvc.Result {
-	// TODO:
-	return nil
+	datalist := c.Service.GetAll()
+
+	return mvc.View{
+		Name: "index.html",
+		Data: iris.Map{
+			"Title":    "球星库",
+			"Datalist": datalist,
+		},
+	}
 }
 
-func (c *IndexControlller) GetBy(id int) mvc.Result {
-	// TODO:
-	return nil
+func (c *IndexController) GetBy(id int) mvc.Result {
+	if id < 0 {
+		return mvc.Response{
+			Path: "/",
+		}
+	}
+	data := c.Service.Get(id)
+	return mvc.View{
+		Name: "info.html",
+		Data: iris.Map{
+			"Title": "球星库",
+			"Data":  data,
+		},
+	}
 }
 
 func (c *IndexController) GetSearch() mvc.Result {
-	// TODO:
-	return nil
+	country := c.Ctx.URLParam("country")
+	datalist := c.Service.Search(country)
+	return mvc.View{
+		Name: "index.html",
+		Data: iris.Map{
+			"Title":    "球星库",
+			"Datalist": datalist,
+		},
+	}
 }
