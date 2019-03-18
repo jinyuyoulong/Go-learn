@@ -6,6 +6,7 @@ import (
 	"v5u.win/golearn/iris/superstar/models"
 )
 
+// interface 协议 接口
 type SuperstarService interface {
 	GetAll() []models.StarInfo
 	Get(id int) *models.StarInfo
