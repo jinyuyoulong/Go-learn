@@ -10,6 +10,7 @@ import (
 	_ "github.com/go-sql-driver/mysql" // 使用MySQL的隐式驱动
 	"github.com/go-xorm/xorm"
 	"v5u.win/golearn/iris/superstar/conf"
+	//  import cycle is not allowed
 )
 
 var (

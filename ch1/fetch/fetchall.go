@@ -10,6 +10,7 @@ import (
 
 func main() {
 	start := time.Now()
+	// 通过channel 共享内存
 	ch := make(chan string) // 创建通道 channel
 	// 循环调用 fetch 函数
 	for _, url := range os.Args[1:] {
