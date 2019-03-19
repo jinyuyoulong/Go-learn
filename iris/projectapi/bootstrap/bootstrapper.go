@@ -95,6 +95,7 @@ const (
 	// go run in ./web 与 main.go 同目录 ./public/ <==> ./web/public/
 	// but go run not in ./web 则./public/ <==> 当前目录下的 public/
 	StaticAssets = "./public/"
+	// StaticAssets = "/v5u.win/golearn/iris/projectapi/web/public/"
 
 	// Favicon is the relative 9to the "StaticAssets") favicon path for our app.
 	Favicon = "favicon.ico"

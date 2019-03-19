@@ -15,7 +15,7 @@ var MasterDbConfig DbConf = DbConf{
 	Port:   3306,
 	User:   "root",
 	Pwd:    "333",
-	DbName: "projectapi",
+	DbName: "superstar",
 }
 
 // 项目大了用到主从的话 需要用到 slave
@@ -24,5 +24,5 @@ var SlaveDbConfig DbConf = DbConf{
 	Port:   3306,
 	User:   "root",
 	Pwd:    "333",
-	DbName: "projectapi",
+	DbName: "superstar",
 }

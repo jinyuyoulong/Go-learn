@@ -15,20 +15,15 @@ import (
 
 type IndexController struct {
 	Ctx     iris.Context
-	Service services.projectapiService
+	Service services.ProjectapiService
 }
 
-func (c *IndexController) Get() mvc.Result {
+func (c *IndexController) Get(ctx iris.Context) {
 	datalist := c.Service.GetAll()
 	// var datalist []models.StarInfo
 	// return mvc.Response{Text: "ok\n"}
-	return mvc.View{
-		Name: "index.html",
-		Data: iris.Map{
-			"Title":    "球星库",
-			"Datalist": datalist,
-		},
-	}
+	ctx.JSON(iris.Map{"message": "Hello iris web framework.",
+		"data": datalist})
 }
 
 func (c *IndexController) GetBy(id int) mvc.Result {

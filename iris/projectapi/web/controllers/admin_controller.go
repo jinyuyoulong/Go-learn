@@ -8,11 +8,12 @@ import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
 	"v5u.win/golearn/iris/projectapi/models"
+	"v5u.win/golearn/iris/projectapi/services"
 )
 
 type AdminController struct {
 	Ctx     iris.Context
-	Service services.projectapiService
+	Service services.ProjectapiService
 }
 
 func (c *AdminController) Get() mvc.Result {
