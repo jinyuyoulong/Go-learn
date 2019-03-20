@@ -21,6 +21,7 @@ func Configure(b *bootstrap.Bootstrapper) {
 	admin.Register(projectapiService)
 	admin.Handle(new(controllers.AdminController))
 
+	// -------------------------------------------------------
 	// b.Get("/", GetIndexHandler)
 	// b.Get("/follower/{id:long}", GetFollowerHandler)
 	// b.Get("/following/{id:long}", GetFollowingHandler)

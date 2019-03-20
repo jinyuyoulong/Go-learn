@@ -34,8 +34,17 @@ func (c *AdminController) GetEdit() mvc.Result {
 	var data *models.StarInfo
 	if err == nil {
 		data = c.Service.Get(id)
+	} else {
+		// 添加，id = -1，必须要设置 Id.否则模板无法判断
+		data = &models.StarInfo{
+			Id: 0,
+		}
 	}
-	fmt.Println(id, data)
+	// if id == -1 {
+	// 	fmt.Println("id is null")
+	// 	// data.Id = 0 data= <nil>
+	// }
+	fmt.Println("edit data: ", id, data)
 
 	return mvc.View{
 		Name: "admin/edit.html",

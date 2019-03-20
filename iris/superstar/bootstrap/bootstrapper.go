@@ -41,7 +41,9 @@ func New(appName, appOwner string, cfgs ...Configurator) *Bootstrapper {
 
 // SetupViews loads the templates.
 func (b *Bootstrapper) SetupViews(viewsDir string) {
-	htmlEngine := iris.HTML(viewsDir, ".html").Layout("shared/layout.html")
+	var sharedLayoutPath string
+	sharedLayoutPath = "shared/layout.html"
+	htmlEngine := iris.HTML(viewsDir, ".html").Layout(sharedLayoutPath)
 	// 每次重新加载模板（线上关闭它，影响性能）
 	htmlEngine.Reload(false)
 	b.RegisterView(htmlEngine)
@@ -94,6 +96,8 @@ const (
 
 	// go run in ./web 与 main.go 同目录 ./public/ <==> ./web/public/
 	// but go run not in ./web 则./public/ <==> 当前目录下的 public/
+	// 对于vscode 来说 build run 的当前目录为项目的打开根目录 例：web/public ==> /Users/fanjinlong/dev/go/golib/src/v5u.win/projectapi/web/public
+	// StaticAssets = "golearn/iris/superstar/web/public/"
 	StaticAssets = "./public/"
 
 	// Favicon is the relative 9to the "StaticAssets") favicon path for our app.

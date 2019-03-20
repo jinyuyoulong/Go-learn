@@ -8,7 +8,6 @@ import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
 	"v5u.win/golearn/iris/projectweb/models"
-	"v5u.win/golearn/iris/projectweb/services"
 )
 
 type AdminController struct {
@@ -34,6 +33,11 @@ func (c *AdminController) GetEdit() mvc.Result {
 	var data *models.StarInfo
 	if err == nil {
 		data = c.Service.Get(id)
+	} else {
+		// 添加，id = -1，必须要设置 Id.否则模板无法判断
+		data = &models.StarInfo{
+			Id: 0,
+		}
 	}
 	fmt.Println(id, data)
 

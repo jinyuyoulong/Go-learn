@@ -3,6 +3,7 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/kataras/iris/mvc"
@@ -26,35 +27,24 @@ func (c *IndexController) Get(ctx iris.Context) {
 		"data": datalist})
 }
 
-func (c *IndexController) GetBy(id int) mvc.Result {
+// /?id=2
+func (c *IndexController) GetBy(ctx iris.Context, id int) {
 	if id < 0 {
-		return mvc.Response{
-			Path: "/",
-		}
+		ctx.JSON(iris.Map{"code": 1, "result": ""})
 	}
 	data := c.Service.Get(id)
-	return mvc.View{
-		Name: "info.html",
-		Data: iris.Map{
-			"Title": "球星库",
-			"info":  data,
-		},
-	}
+	ctx.JSON(iris.Map{"code": 0, "result": data})
 }
 
-func (c *IndexController) GetSearch() mvc.Result {
+// /search?country=瑞士
+func (c *IndexController) GetSearch(ctx iris.Context) {
 	country := c.Ctx.URLParam("country")
 	datalist := c.Service.Search(country)
-	return mvc.View{
-		Name: "index.html",
-		Data: iris.Map{
-			"Title":    "球星库",
-			"Datalist": datalist,
-		},
-	}
+	fmt.Println("search:", datalist)
+	ctx.JSON(iris.Map{"code": 0, "result": datalist})
 }
 
-// 手动清除缓存
+// 手动清除缓存 分布式数据同步
 func (c *IndexController) GetClearcache() mvc.Result {
 	err := datasource.InstanceMaster().ClearCache(&models.StarInfo{})
 	if err != nil {

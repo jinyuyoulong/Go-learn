@@ -1,5 +1,6 @@
 package models
 
+// # 数据库建表遵循 全小写原则
 type StarInfo struct {
 	Id           int    `xorm:"not null pk autoincr comment('主键ID') INT(10)" form:"id"`
 	NameZh       string `xorm:"not null comment('中文名') VARCHAR(50)" form:"name_zh"`

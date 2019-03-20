@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "go",
+            "label": "run",
             "type": "shell",
             "command": "go",
             "args": [
@@ -16,11 +16,30 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "go",
+            "args": [
+                "build",
+                "-v",
+                "${file}"
+            ]
         }
     ],
     "options": {
         "env": {
-            "GOPATH": "/Users/huanghaiyan/Documents/Dev/go/golib"
+            "GOPATH":"/Users/fanjinlong/dev/go/golib"
         }
-    }    
+    },
+    "presentation":{
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+    },
+        
 }

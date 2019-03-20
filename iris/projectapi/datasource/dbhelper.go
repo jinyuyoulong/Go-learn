@@ -33,7 +33,11 @@ func InstanceMaster() *xorm.Engine {
 	}
 
 	c := conf.MasterDbConfig
+
 	connet := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", c.User, c.Pwd, c.Host, c.Port, c.DbName)
+
+	fmt.Println(connet)
+
 	engine, err := xorm.NewEngine(conf.DriverName, connet)
 	if err != nil {
 		log.Fatal("dbhelper.instanceMaster error=%s", err)

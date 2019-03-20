@@ -1,6 +1,9 @@
 go modules
 
 预先处理
+
+正确配置 GOROOT
+
 export GOPROXY="https://athens.azurefd.net" # 微软提供的公共代理，解决golang/x/tools 下载失败
 
 初始化

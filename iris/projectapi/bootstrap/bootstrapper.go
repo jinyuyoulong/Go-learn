@@ -36,7 +36,7 @@ func New(appName, appOwner string, cfgs ...Configurator) *Bootstrapper {
 		cfg(b)
 	}
 
-	return b
+	return bz
 }
 
 // SetupViews loads the templates.
@@ -94,8 +94,9 @@ const (
 
 	// go run in ./web 与 main.go 同目录 ./public/ <==> ./web/public/
 	// but go run not in ./web 则./public/ <==> 当前目录下的 public/
-	StaticAssets = "./public/"
-	// StaticAssets = "/v5u.win/golearn/iris/projectapi/web/public/"
+	// 对于vscode 来说 build run 的当前目录为项目的打开根目录 例：web/public ==> /Users/fanjinlong/dev/go/golib/src/v5u.win/projectapi/web/public
+	// StaticAssets = "./public/"
+	StaticAssets = "web/public/"
 
 	// Favicon is the relative 9to the "StaticAssets") favicon path for our app.
 	Favicon = "favicon.ico"
@@ -114,7 +115,8 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 func (b *Bootstrapper) Bootstrap() *Bootstrapper {
 	// b.SetupViews("./golearn/iris/projectapi/web/views")
 	// go run in ./web 与 main.go
-	b.SetupViews("./views")
+	// b.SetupViews("./views")
+	b.SetupViews("./web/views")
 	b.SetupSessions(24*time.Hour,
 		[]byte("the-big-and-secret-fash-key-here"),
 		[]byte("lot-secret-of-characters-big-too"),
