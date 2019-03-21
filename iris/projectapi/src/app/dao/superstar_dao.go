@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/go-xorm/xorm"
-	"v5u.win/golearn/iris/projectapi/models"
+	"v5u.win/golearn/iris/projectapi/src/app/model"
 )
 
 type ProjectapiDao struct {
@@ -19,8 +19,8 @@ func NewProjectapiDao(engine *xorm.Engine) *ProjectapiDao {
 	}
 }
 
-func (s *ProjectapiDao) Get(id int) *models.StarInfo {
-	data := &models.StarInfo{Id: id}
+func (s *ProjectapiDao) Get(id int) *model.StarInfo {
+	data := &model.StarInfo{Id: id}
 	ok, err := s.engine.Get(data)
 	if ok && err == nil {
 		return data
@@ -30,10 +30,10 @@ func (s *ProjectapiDao) Get(id int) *models.StarInfo {
 	}
 }
 
-func (s *ProjectapiDao) GetAll() []models.StarInfo {
+func (s *ProjectapiDao) GetAll() []model.StarInfo {
 	// 集合的两种创建方式
-	// datalist := make([]models.StartInfo, 0)
-	datalist := []models.StarInfo{}
+	// datalist := make([]model.StartInfo, 0)
+	datalist := []model.StarInfo{}
 	err := s.engine.Desc("id").Find(&datalist)
 	if err != nil {
 		log.Println(err)
@@ -45,26 +45,26 @@ func (s *ProjectapiDao) GetAll() []models.StarInfo {
 
 func (s *ProjectapiDao) Delete(id int) error {
 	// 假删除
-	data := &models.StarInfo{Id: id, SysStatus: 1}
+	data := &model.StarInfo{Id: id, SysStatus: 1}
 	_, err := s.engine.Id(data.Id).Update(data)
 
 	return err
 }
 
 // columns 判断强制更新
-func (s *ProjectapiDao) Update(data *models.StarInfo, columns []string) error {
+func (s *ProjectapiDao) Update(data *model.StarInfo, columns []string) error {
 	_, err := s.engine.Id(data.Id).MustCols(columns...).Update(data)
 	// 用到 MustCols 方法
 	return err
 }
 
-func (s *ProjectapiDao) Create(data *models.StarInfo) error {
+func (s *ProjectapiDao) Create(data *model.StarInfo) error {
 	_, err := s.engine.Insert(data)
 	return err
 }
 
-func (s *ProjectapiDao) Search(country string) []models.StarInfo {
-	datalist := []models.StarInfo{}
+func (s *ProjectapiDao) Search(country string) []model.StarInfo {
+	datalist := []model.StarInfo{}
 	err := s.engine.Where("country=?", country).Desc("id").Find(&datalist)
 	if err != nil {
 		log.Println(err)

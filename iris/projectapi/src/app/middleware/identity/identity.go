@@ -7,7 +7,7 @@ import (
 
 	"github.com/kataras/iris"
 
-	"v5u.win/golearn/iris/projectapi/bootstrap"
+	"v5u.win/golearn/iris/projectapi/src/app/bootstrap"
 )
 
 // New returns a new handler which adds some headers and view data

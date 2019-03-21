@@ -1,4 +1,4 @@
-package models
+package model
 
 // # 数据库建表遵循 全小写原则
 type StarInfo struct {

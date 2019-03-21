@@ -1,4 +1,4 @@
-package controllers
+package controller
 
 import (
 	"fmt"
@@ -7,13 +7,13 @@ import (
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"v5u.win/golearn/iris/projectapi/models"
-	"v5u.win/golearn/iris/projectapi/services"
+	"v5u.win/golearn/iris/projectapi/src/app/model"
+	"v5u.win/golearn/iris/projectapi/src/app/src/app/service"
 )
 
 type AdminController struct {
 	Ctx     iris.Context
-	Service services.ProjectapiService
+	Service service.ProjectapiService
 }
 
 func (c *AdminController) Get() mvc.Result {
@@ -31,7 +31,7 @@ func (c *AdminController) Get() mvc.Result {
 
 func (c *AdminController) GetEdit() mvc.Result {
 	id, err := c.Ctx.URLParamInt("id")
-	var data *models.StarInfo
+	var data *model.StarInfo
 	if err == nil {
 		data = c.Service.Get(id)
 	}
@@ -49,8 +49,8 @@ func (c *AdminController) GetEdit() mvc.Result {
 
 // 上传数据
 func (c *AdminController) PostSave() mvc.Result {
-	info := models.StarInfo{}
-	err := c.Ctx.ReadForm(&info) // 结合 models 中填写的 form 信息 使用
+	info := model.StarInfo{}
+	err := c.Ctx.ReadForm(&info) // 结合 model 中填写的 form 信息 使用
 	if err != nil {
 		log.Fatal(err)
 	}

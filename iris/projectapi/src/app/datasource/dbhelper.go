@@ -9,7 +9,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql" // 使用MySQL的隐式驱动
 	"github.com/go-xorm/xorm"
-	"v5u.win/golearn/iris/projectapi/conf"
+	"v5u.win/golearn/iris/projectapi/src/app/config"
 )
 
 var (
@@ -32,13 +32,13 @@ func InstanceMaster() *xorm.Engine {
 		return masterEngine
 	}
 
-	c := conf.MasterDbConfig
+	c := config.MasterDbConfig
 
 	connet := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", c.User, c.Pwd, c.Host, c.Port, c.DbName)
 
 	fmt.Println(connet)
 
-	engine, err := xorm.NewEngine(conf.DriverName, connet)
+	engine, err := xorm.NewEngine(config.DriverName, connet)
 	if err != nil {
 		log.Fatal("dbhelper.instanceMaster error=%s", err)
 	}
@@ -57,9 +57,9 @@ func InstanceSlave() *xorm.Engine {
 		return slaveEngine
 	}
 
-	c := conf.SlaveDbConfig
+	c := config.SlaveDbConfig
 	connet := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", c.User, c.Pwd, c.Host, c.Port, c.DbName)
-	engine, err := xorm.NewEngine(conf.DriverName, connet)
+	engine, err := xorm.NewEngine(config.DriverName, connet)
 	// 增加缓存，减少数据库依赖，影响性能
 	cacher := xorm.NewLRUCacher(xorm.NewMemoryStore(), 1000)
 	engine.SetDefaultCacher(cacher)

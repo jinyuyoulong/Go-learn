@@ -1,9 +1,9 @@
 package main
 
 import (
-	"v5u.win/golearn/iris/projectapi/bootstrap"
-	"v5u.win/golearn/iris/projectapi/web/middleware/identity"
-	"v5u.win/golearn/iris/projectapi/web/routes"
+	"v5u.win/golearn/iris/projectapi/src/app/bootstrap"
+	"v5u.win/golearn/iris/projectapi/src/app/web/middleware/identity"
+	"v5u.win/golearn/iris/projectapi/src/app/web/routes"
 )
 
 func newApp() *bootstrap.Bootstrapper {

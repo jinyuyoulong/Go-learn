@@ -1,4 +1,4 @@
-package conf
+package config
 
 const DriverName = "mysql"
 

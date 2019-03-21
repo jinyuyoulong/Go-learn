@@ -36,7 +36,7 @@ func New(appName, appOwner string, cfgs ...Configurator) *Bootstrapper {
 		cfg(b)
 	}
 
-	return bz
+	return b
 }
 
 // SetupViews loads the templates.
@@ -94,7 +94,7 @@ const (
 
 	// go run in ./web 与 main.go 同目录 ./public/ <==> ./web/public/
 	// but go run not in ./web 则./public/ <==> 当前目录下的 public/
-	// 对于vscode 来说 build run 的当前目录为项目的打开根目录 例：web/public ==> /Users/fanjinlong/dev/go/golib/src/v5u.win/projectapi/web/public
+	// 对于vscode 来说 build run 的当前目录为项目的打开根目录 例：web/public ==> /Users/fanjinlong/dev/go/golib/src/v5u.win/projectapi/src/app/web/public
 	// StaticAssets = "./public/"
 	StaticAssets = "web/public/"
 
@@ -113,7 +113,7 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 //
 // Returns itself.
 func (b *Bootstrapper) Bootstrap() *Bootstrapper {
-	// b.SetupViews("./golearn/iris/projectapi/web/views")
+	// b.SetupViews("./golearn/iris/projectapi/src/app/web/views")
 	// go run in ./web 与 main.go
 	// b.SetupViews("./views")
 	b.SetupViews("./web/views")
