@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/gorilla/securecookie"
+	"v5u.win/golearn/iris/projectapi/src/app/controller"
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
@@ -37,15 +38,6 @@ func New(appName, appOwner string, cfgs ...Configurator) *Bootstrapper {
 	}
 
 	return b
-}
-
-// SetupViews loads the templates.
-func (b *Bootstrapper) SetupViews(viewsDir string) {
-	htmlEngine := iris.HTML(viewsDir, ".html").Layout("shared/layout.html")
-	// 每次重新加载模板（线上关闭它，影响性能）
-	htmlEngine.Reload(false)
-	b.RegisterView(htmlEngine)
-
 }
 
 // SetupSessions initializes the sessions, optionally.
@@ -82,10 +74,7 @@ func (b *Bootstrapper) SetupErrorHandlers() {
 			ctx.JSON(err)
 			return
 		}
-
-		ctx.ViewData("Err", err)
-		ctx.ViewData("Title", "Error")
-		ctx.View("shared/error.html")
+		ctx.JSON(controller.ApiResult(false, nil, "404 not find"))
 	})
 }
 
@@ -96,10 +85,7 @@ const (
 	// but go run not in ./web 则./public/ <==> 当前目录下的 public/
 	// 对于vscode 来说 build run 的当前目录为项目的打开根目录 例：web/public ==> /Users/fanjinlong/dev/go/golib/src/v5u.win/projectapi/src/app/web/public
 	// StaticAssets = "./public/"
-	StaticAssets = "web/public/"
-
-	// Favicon is the relative 9to the "StaticAssets") favicon path for our app.
-	Favicon = "favicon.ico"
+	StaticAssets = "../public/"
 )
 
 // Configure accepts configurations and runs them inside the Bootstraper's context.
@@ -116,7 +102,7 @@ func (b *Bootstrapper) Bootstrap() *Bootstrapper {
 	// b.SetupViews("./golearn/iris/projectapi/src/app/web/views")
 	// go run in ./web 与 main.go
 	// b.SetupViews("./views")
-	b.SetupViews("./web/views")
+	// b.SetupViews("./web/views")
 	b.SetupSessions(24*time.Hour,
 		[]byte("the-big-and-secret-fash-key-here"),
 		[]byte("lot-secret-of-characters-big-too"),
@@ -124,8 +110,6 @@ func (b *Bootstrapper) Bootstrap() *Bootstrapper {
 	b.SetupErrorHandlers()
 
 	// static files
-	b.Favicon(StaticAssets + Favicon)
-	b.StaticWeb(StaticAssets[1:len(StaticAssets)-1], StaticAssets)
 
 	// middleware, after static files
 	b.Use(recover.New())

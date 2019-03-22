@@ -21,10 +21,7 @@ type IndexController struct {
 
 func (c *IndexController) Get(ctx iris.Context) {
 	datalist := c.Service.GetAll()
-	// var datalist []model.StarInfo
-	// return mvc.Response{Text: "ok\n"}
-	ctx.JSON(iris.Map{"message": "Hello iris web framework.",
-		"data": datalist})
+	ctx.JSON(ApiResult(true, datalist, ""))
 }
 
 // /?id=2
@@ -33,7 +30,7 @@ func (c *IndexController) GetBy(ctx iris.Context, id int) {
 		ctx.JSON(iris.Map{"code": 1, "result": ""})
 	}
 	data := c.Service.Get(id)
-	ctx.JSON(iris.Map{"code": 0, "result": data})
+	ctx.JSON(ApiResult(true, data, ""))
 }
 
 // /search?country=瑞士
@@ -41,7 +38,7 @@ func (c *IndexController) GetSearch(ctx iris.Context) {
 	country := c.Ctx.URLParam("country")
 	datalist := c.Service.Search(country)
 	fmt.Println("search:", datalist)
-	ctx.JSON(iris.Map{"code": 0, "result": datalist})
+	ctx.JSON(ApiResult(true, datalist, ""))
 }
 
 // 手动清除缓存 分布式数据同步

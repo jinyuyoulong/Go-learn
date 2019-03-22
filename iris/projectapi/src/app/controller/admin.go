@@ -6,9 +6,8 @@ import (
 	"time"
 
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/mvc"
 	"v5u.win/golearn/iris/projectapi/src/app/model"
-	"v5u.win/golearn/iris/projectapi/src/app/src/app/service"
+	"v5u.win/golearn/iris/projectapi/src/app/service"
 )
 
 type AdminController struct {
@@ -16,39 +15,25 @@ type AdminController struct {
 	Service service.ProjectapiService
 }
 
-func (c *AdminController) Get() mvc.Result {
-	datalist := c.Service.GetAll()
-
-	return mvc.View{
-		Name: "admin/index.html",
-		Data: iris.Map{
-			"Title":    "管理后台",
-			"Datalist": datalist,
-		},
-		Layout: "admin/layout.html",
-	}
+func (c *AdminController) Get(ctx iris.Context) {
+	var datalist []model.StarInfo
+	datalist = c.Service.GetAll()
+	ctx.JSON(ApiResult(true, datalist, ""))
 }
 
-func (c *AdminController) GetEdit() mvc.Result {
+// remove, not used
+func (c *AdminController) GetEdit(ctx iris.Context) {
 	id, err := c.Ctx.URLParamInt("id")
 	var data *model.StarInfo
 	if err == nil {
 		data = c.Service.Get(id)
 	}
 	fmt.Println(id, data)
-
-	return mvc.View{
-		Name: "admin/edit.html",
-		Data: iris.Map{
-			"Title": "管理后台",
-			"info":  data,
-		},
-		Layout: "admin/layout.html", // 不要跟前端的layout混用
-	}
+	ctx.JSON(ApiResult(true, data, ""))
 }
 
 // 上传数据
-func (c *AdminController) PostSave() mvc.Result {
+func (c *AdminController) PostSave(ctx iris.Context) {
 	info := model.StarInfo{}
 	err := c.Ctx.ReadForm(&info) // 结合 model 中填写的 form 信息 使用
 	if err != nil {
@@ -61,19 +46,23 @@ func (c *AdminController) PostSave() mvc.Result {
 		info.SysCreated = int(time.Now().Unix())
 		c.Service.Create(&info)
 	}
-
-	return mvc.Response{
-		Path: "/admin/",
-	}
+	ctx.JSON(ApiResult(true, "post data success!", ""))
 }
 
-func (c *AdminController) GetDelete() mvc.Result {
+// 假删除 sys_status:1
+func (c *AdminController) GetDelete(ctx iris.Context) {
 	id, err := c.Ctx.URLParamInt("id")
-	if err == nil {
-		c.Service.Delete(id)
-	}
 
-	return mvc.Response{
-		Path: "/admin/",
+	if err != nil {
+		log.Fatal(err)
+		ctx.JSON(ApiResult(false, "", "argument wrong!"))
+	}
+	err = c.Service.Delete(id)
+	fmt.Println(id)
+	if err != nil {
+		log.Fatal(err)
+		ctx.JSON(ApiResult(false, "delete data faild!", err.Error()))
+	} else {
+		ctx.JSON(ApiResult(true, "delete data success!", ""))
 	}
 }
