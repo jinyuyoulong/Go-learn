@@ -9,6 +9,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql" // 使用MySQL的隐式驱动
 	"github.com/go-xorm/xorm"
+	"github.com/pelletier/go-toml"
 	"v5u.win/golearn/iris/projectapi/src/app/config"
 )
 
@@ -32,13 +33,20 @@ func InstanceMaster() *xorm.Engine {
 		return masterEngine
 	}
 
-	c := config.MasterDbConfig
+	driver := config.Conf.Get("database.dirver").(string)
+	configTree := config.Conf.Get(driver).(*toml.Tree)
+	userName := configTree.Get("databaseUsername").(string)
+	password := configTree.Get("databasePassword").(string)
+	databaseName := configTree.Get("databaseName").(string)
+	dbHost := configTree.Get("databaseHost").(string)
+	dbPort := configTree.Get("databasePort").(string)
 
-	connet := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", c.User, c.Pwd, c.Host, c.Port, c.DbName)
+	connet := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", userName, password, dbHost, dbPort, databaseName)
 
 	fmt.Println(connet)
-
-	engine, err := xorm.NewEngine(config.DriverName, connet)
+	var dbDirver string
+	dbDirver = config.Conf.Get("database.dirver").(string)
+	engine, err := xorm.NewEngine(dbDirver, connet)
 	if err != nil {
 		log.Fatal("dbhelper.instanceMaster error=%s", err)
 	}
@@ -59,7 +67,9 @@ func InstanceSlave() *xorm.Engine {
 
 	c := config.SlaveDbConfig
 	connet := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", c.User, c.Pwd, c.Host, c.Port, c.DbName)
-	engine, err := xorm.NewEngine(config.DriverName, connet)
+	var dbDirver string
+	dbDirver = config.Conf.Get("database.dirver").(string)
+	engine, err := xorm.NewEngine(dbDirver, connet)
 	// 增加缓存，减少数据库依赖，影响性能
 	cacher := xorm.NewLRUCacher(xorm.NewMemoryStore(), 1000)
 	engine.SetDefaultCacher(cacher)

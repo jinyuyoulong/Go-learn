@@ -1,6 +1,8 @@
 package bootstrap
 
 import (
+	"fmt"
+	"reflect"
 	"time"
 
 	"github.com/gorilla/securecookie"
@@ -44,6 +46,9 @@ func (b *Bootstrapper) SetupViews(viewsDir string) {
 	var sharedLayoutPath string
 	sharedLayoutPath = "shared/layout.html"
 	htmlEngine := iris.HTML(viewsDir, ".html").Layout(sharedLayoutPath)
+
+	fmt.Println("html engine ", reflect.TypeOf(htmlEngine))
+
 	// 每次重新加载模板（线上关闭它，影响性能）
 	htmlEngine.Reload(false)
 	b.RegisterView(htmlEngine)
@@ -116,7 +121,7 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 // Returns itself.
 func (b *Bootstrapper) Bootstrap() *Bootstrapper {
 	// b.SetupViews("./golearn/iris/superstar/web/views")
-	// go run in ./web 与 main.go
+	// go run in ./web 目录下的 main.go文件
 	b.SetupViews("./views")
 	b.SetupSessions(24*time.Hour,
 		[]byte("the-big-and-secret-fash-key-here"),

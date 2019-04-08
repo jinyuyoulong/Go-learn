@@ -1,0 +1,22 @@
+[app]
+  # app 名称
+  name = "projectapi database"
+  url = "http://localhost"
+  #文档地址
+  doc = "../../../doc"
+  port = ":8080"
+  debug = false
+
+[database]
+  dirver = "mysql"
+
+[mysql]
+  databaseName = "superstar"
+  databaseUsername = "root"
+  databasePassword = "333"
+  databaseHost = "127.0.0.1"
+  databasePort = "3306"
+
+[test]
+  LoginUserName = "admin"
+  LoginPassword = "password"

@@ -17,5 +17,5 @@ func newApp() *bootstrap.Bootstrapper {
 
 func main() {
 	app := newApp()
-	app.Listen(config.Port)
+	app.Listen(config.Conf.Get("app.port").(string))
 }
