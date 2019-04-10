@@ -1,5 +1,6 @@
 package main
 
+// 不定参数 方法定义
 import "fmt"
 
 type myFunc func(int) myFunc
@@ -21,6 +22,7 @@ func Sum(nums ...int) myFunc {
 
 	return f1
 }
+
 func main() {
 	Sum(2, 3)
 	fmt.Println(total)

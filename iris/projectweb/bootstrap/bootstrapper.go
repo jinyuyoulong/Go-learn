@@ -111,8 +111,7 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 //
 // Returns itself.
 func (b *Bootstrapper) Bootstrap() *Bootstrapper {
-	// b.SetupViews("./golearn/iris/projectweb/web/views")
-	// go run in ./web 与 main.go
+	// ./views 相对的是 可执行文件所在的路径
 	b.SetupViews("./views")
 	b.SetupSessions(24*time.Hour,
 		[]byte("the-big-and-secret-fash-key-here"),
