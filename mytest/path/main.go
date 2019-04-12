@@ -11,8 +11,8 @@ import (
 func main() {
 	// println(os.Args[0])
 	wd, _ := os.Getwd()
-
-	println(path.Dir(wd))
+	println(wd)
+	// println(path.Dir(wd))
 	// println(GetCurrentDirectory())
 }
 func GetRootDirectory() string {
