@@ -8,8 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 
-	// "v5u.win/add"
-	"v5u.win/add/helloworld"
+	"v5u.win/add"
 )
 
 var clientCmd = &cobra.Command{
@@ -33,28 +32,17 @@ func runClient() error {
 
 	app := iris.New()
 
-	// app.Get("/:a/:b", func(ctx iris.Context) {
-	// 	a, _ := ctx.Params().GetInt64("a")
-	// 	b, _ := ctx.Params().GetInt64("b")
+	app.Get("/:a/:b", func(ctx iris.Context) {
+		a, _ := ctx.Params().GetInt64("a")
+		b, _ := ctx.Params().GetInt64("b")
 
-	// 	c := context.Background() // top level context
-	// 	rs, err := cl.Add(c, &add.AddRequest{A: uint64(a), B: uint64(b)})
-	// 	if err != nil {
-	// 		ctx.Text(err.Error())
-	// 		return
-	// 	}
-	// 	ctx.JSON(rs)
-	// })
-
-	app.Get("/:name", func(ctx iris.Context) {
-		name, _ := ctx.Params().GetString("name")
-		topCtx := context.Background()
-		result, err := cl.Add(topCtx, &helloworld.HelloRequest{Name: name})
+		c := context.Background() // top level context
+		rs, err := cl.Add(c, &add.AddRequest{A: uint64(a), B: uint64(b)})
 		if err != nil {
 			ctx.Text(err.Error())
 			return
 		}
-		ctx.JSON(result)
+		ctx.JSON(rs)
 	})
 	return app.Run(iris.Addr(":8100"))
 }
