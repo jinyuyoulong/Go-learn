@@ -3,8 +3,9 @@
         "editor.insertSpaces": false,
         "editor.formatOnSave": true
     },
-    "go.goroot": "C:\\go\\bin",
-    "go.gopath": "D:\\develop_files\\go\\bin",
+    "go.goroot": "/home/fan/go",
+    "go.gopath": "/home/fan/dev/go/bin",
+
     "go.buildOnSave": "package",
     "go.lintOnSave": "file",
     "go.vetOnSave": "off",

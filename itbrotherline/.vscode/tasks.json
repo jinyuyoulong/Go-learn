@@ -30,7 +30,8 @@
     ],
     "options": {
         "env": {
-            "GOPATH":"D:\\develop_files\\go\\bin"
+            "GOPATH":"/home/fan/dev/go/bin",
+            "GOROOT":"/home/fan/go/bin"
         }
     },
     "presentation":{

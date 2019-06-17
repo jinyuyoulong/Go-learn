@@ -19,7 +19,7 @@
             "remotePath": "",
             "port": 2345,
             "host": "127.0.0.1",
-            "program": "D:\\develop_files\\go\\bin",
+            "program": "/home/fan/dev/go/bin",
             "env": {},
             "args": []
         }
