@@ -14,7 +14,7 @@ import (
 
 const IssuesURL = "https://api.github.com/search/issues"
 
-//FIXME 为什么成员变量要首字母大写？
+//FIXME 为什么成员变量要首字母大写？ 因为 public
 type IssuesSearchResult struct {
 	TotalCount int `json:"total_count"`
 	Items      []*Issue
