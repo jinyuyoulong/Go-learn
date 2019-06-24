@@ -27,6 +27,7 @@ func main() {
 			img.Set(px, py, mandelbrot(z))
 		}
 	}
+
 	png.Encode(os.Stdout, img) // NOTE: ignoring errors
 }
 
