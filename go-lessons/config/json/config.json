@@ -1,0 +1,21 @@
+{
+    "image_lib": "Imagick",
+    "image_path":    "../../app_images/",
+    "image_url": "image/", 
+    "image_org": "org", 
+    "image_tmp": "tmp", 
+    "image_types": ["jpg","jpeg","png","gif"],
+    "car_images": [
+        "100x100",
+        "200x200"
+    ],
+    "water_mark": "",
+    "image_categroy": {
+        "paths": "/car_logo/org/",
+        "sizes": [
+            "100x100",
+            "200x200"
+        ]
+    }
+    
+}

@@ -36,6 +36,7 @@ func main() {
 	UnmarshalFunction(jsonData)
 }
 
+// object -> json
 func MarshalFunction() []byte {
 	data, err := json.Marshal(movies)
 	if err != nil {
@@ -52,9 +53,12 @@ func MarshalFunction() []byte {
 	return data
 }
 
+// json to object
 func UnmarshalFunction(data []byte) {
 	var titles []struct{ Title string }
-	if err := json.Unmarshal(data, &titles); err != nil {
+
+	err := json.Unmarshal(data, &titles)
+	if err != nil {
 		log.Fatalf("JSON unmarshaling failed: %s", err)
 	}
 	fmt.Println(titles) // "[{Casablanca} {Cool Hand Luke} {Bullitt}]

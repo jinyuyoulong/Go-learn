@@ -1,0 +1,23 @@
+[app]
+  #app名称
+  name = "project-web"
+  url = "http://localhost"
+  port = ":8080"
+  debug = false
+
+[image]
+  image_lib = "Imagick" # GD || Imagick
+  image_path   = "../app_images/" #// 目录可读写
+  image_url    = "image/" #// http://static.xxx.com/image/car_photo/150x150/19/sdddddd
+  image_org    = 'org' #// 原图路径名
+  image_tmp    = "tmp" #// 临时路径名
+  image_types  = ["jpg","jpeg","png","gif"]
+  water_mark   = ""
+  #// 汽车品牌LOGO
+    [image.imageCategory.carLogo]
+    #// 哈希路径
+      paths = "/car_logo/org/"
+    #// 支持的尺寸
+      sizes = ["100x100","200x200"]
+    [image.imageCategory.imgLogo]
+      paths = "/car_logo/100*100/"
