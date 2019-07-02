@@ -1,5 +1,5 @@
 # Binaries for programs and plugins
-.exe
+*.exe
 .exe~
 .dll
 .so
@@ -12,3 +12,4 @@
 *.out
 iris/projectapi/.vscode
 iris/projectweb/.vscode
+.vscode
