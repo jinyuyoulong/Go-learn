@@ -9,7 +9,7 @@ import (
 	"github.com/kataras/iris/sessions"
 )
 
-// VisitController处理根路由。.
+// VisitController 处理根路由。
 type VisitController struct {
 	//当前请求 Session
 	//它的初始化是由我们添加到`visitApp`的依赖函数发生的。

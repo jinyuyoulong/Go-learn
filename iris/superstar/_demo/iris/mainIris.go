@@ -4,7 +4,7 @@ import "github.com/kataras/iris"
 
 func main() {
 	app := iris.New()
-	appEngine := iris.HTML("/Users/fanjinlong/dev/go/golib/src/v5u.win/golearn/iris/superstar/_demo/iris/", ".html")
+	appEngine := iris.HTML("/Users/fanjinlong/dev/go/golib/src/github.com/jinyuyoulong/Go-learn/iris/superstar/_demo/iris/", ".html")
 	app.RegisterView(appEngine)
 
 	app.Get("/", func(ctx iris.Context) {

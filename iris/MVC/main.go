@@ -1,13 +1,13 @@
 package main
 
 import (
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/datasource"
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/repositories"
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/services"
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/web/controllers"
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/web/middleware"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"v5u.win/golearn/iris/MVC/datasource"
-	"v5u.win/golearn/iris/MVC/repositories"
-	"v5u.win/golearn/iris/MVC/services"
-	"v5u.win/golearn/iris/MVC/web/middleware"
-	"v5u.win/golearn/iris/MVC/web/controllers"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 	//加载模板文件
 	app.RegisterView(iris.HTML("./web/views", ".html"))
 	// 注册控制器
-	// mvc.New(app.Party("/movies")).Handle(new(controllers.MovieController))
+	mvc.New(app.Party("/movies")).Handle(new(controllers.MovieController))
 	//您还可以拆分您编写的代码以配置mvc.Application
 	//使用`mvc.Configure`方法，如下所示。
 	mvc.Configure(app.Party("/movies"), movies)

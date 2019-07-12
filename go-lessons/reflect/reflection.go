@@ -6,9 +6,15 @@ import (
 )
 
 type User struct {
-	ID   int
-	Name string
-	Age  int
+	Person Person
+	ID     int
+	Name   string
+	Age    int
+}
+
+type Person struct {
+	Name  string
+	Sizes []string
 }
 
 func (u *User) Hello(name string) string {
@@ -22,11 +28,47 @@ func main() {
 	// v.Elem().SetInt(999)
 	// fmt.Println(x)
 
-	u := User{1, "OK", 22}
-	// Set(&u)
-	setFunction(&u)
+	u := User{Person{
+		"xiao", []string{"1", "2"},
+	},
+		1, "OK", 22}
+	baseFunc(u)
 
-	fmt.Println(u)
+	// // Set(&u)
+	// setFunction(&u)
+	// fmt.Println(u)
+}
+
+func baseFunc(o interface{}) {
+	// 反射的基本操作
+	// 1. 获取数据类型
+	oType := reflect.TypeOf(o)
+	// 1.1 获取对象属性
+	f := oType.Field(0)
+	// 1.1.1 获取属性 Name
+	propertyName := f.Name
+	fmt.Printf("%s\n", propertyName)
+
+	// 2. 获取对象的值
+	vType := reflect.ValueOf(o)
+
+	// 2.1 获取属性值的 自定义数据类型
+	valueType := vType.FieldByName(propertyName)
+	fmt.Println(valueType.Interface())
+
+	// 2.2 获取属性值
+	propertyValue := vType.Field(0).Interface()
+	fmt.Printf("field: %T, %v\n", propertyValue, propertyValue)
+	// fmt.Printf("%v", Person(propertyValue).Sizes)
+
+	// 2.3 获取子属性值 取 第0个属性的第一个属性值
+	// personValue := vType.FieldByIndex([]int{0, 1}).Interface()
+	person := vType.Field(0).Interface()
+
+	// 3 类型断言，转换类型 interface{} ——> Person
+	mperson := person.(Person)
+
+	fmt.Printf("%T, %v", mperson, mperson.Sizes[1])
 }
 
 // 修改变量的值

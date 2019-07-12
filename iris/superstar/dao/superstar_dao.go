@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/go-xorm/xorm"
-	"v5u.win/golearn/iris/superstar/models"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/models"
 )
 
 type SuperstarDao struct {

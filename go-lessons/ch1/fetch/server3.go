@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"v5u.win/golearn/gostart"
+	"github.com/jinyuyoulong/Go-learn/gostart"
 )
 
 func main() {

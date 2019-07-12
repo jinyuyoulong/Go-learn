@@ -7,8 +7,8 @@ import (
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"v5u.win/golearn/iris/superstar/models"
-	"v5u.win/golearn/iris/superstar/services"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/models"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/services"
 )
 
 type AdminController struct {
