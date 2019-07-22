@@ -2,63 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad031410-5bd2-4f9f-93ef-183256fab196" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Go-learn.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go-lessons/mutex/condition.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go-lessons/sync/mutex.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go-lessons/sync/rwmutex.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go-lessons/timer/jakecoffman/jakecoffman.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iris/cache/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iris/cache/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iris/cache/simpleCache.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/05_正则表达式.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/06_filePath.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/07_config_toml.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch1/fetch/fetch.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch1/fetch/fetch1.7.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch1/fetch/fetchall.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch1/fetch/server1.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch1/fetch/server2.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch1/fetch/server3.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch2/cf温度转换/cf.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch2/popcount/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch2/popcount/popcount.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch3/basename.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch3/comma.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch3/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/autoescape/autoescape.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/autoescape/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/autoescape/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/github/github.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/issues/issues.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/issueshtml/issues.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/issueshtml/issues2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/issueshtml/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/issueshtml/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/issuesreport/issuesreport.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/movie/movie.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/www.omdbapi.com-api/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/ch4-web/xkcd.com/xkcd.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/image-mandelbrot/demo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/image-mandelbrot/image-mandelbrot.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/image-surface/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/image-surface/main.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go-lessons/script/buidlAndRun.sh" beforeDir="false" afterPath="$PROJECT_DIR$/go-lessons/script/buidlAndRun.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/datastruct/default-value/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/datastruct/float/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/datastruct/string/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/panic/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/it-brother-line/panic/marry/marry.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teachclass/tcpCS/tcpclint/client.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teachclass/tcpCS/tcpserver/01tcpserver.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempconv/conv.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempconv/tempconv.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +69,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,19 +90,19 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
@@ -238,7 +183,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.35379645" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35379645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />

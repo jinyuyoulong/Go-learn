@@ -9,9 +9,10 @@ import (
 type Task struct {
 	Id string
 }
+
 // 实现cron.Job{}接口
-func (t Task)Run()  {
-	fmt.Println("task job ",t.Id," running...")
+func (t Task) Run() {
+	fmt.Println("task job ", t.Id, " running...")
 }
 
 var serviceCron *cron.Cron
@@ -20,13 +21,12 @@ func init() {
 	//serviceCron = cron.New()
 }
 
-func main()  {
-
+func main() {
 
 	demo()
 }
-func mytest()  {
-	task2 := Task{Id:"name2"}
+func mytest() {
+	task2 := Task{Id: "name2"}
 	//serviceCron.AddJob("@every 1s",task2)
 
 	//spec1 := "0 30 * * * *"
@@ -56,10 +56,9 @@ func mytest()  {
 	//serviceCron.AddFunc("@daily", func() { fmt.Println("Every day") })
 	//serviceCron.AddFunc("@every 1s", func() { fmt.Println("Every 秒 job run") })
 	spec0 := "*/1 * * * * *"
-	serviceCron.AddJob(spec0,task2)
+	serviceCron.AddJob(spec0, task2)
 
 	serviceCron.Start()
-
 
 	//inspect(serviceCron.Entries())
 
@@ -67,66 +66,67 @@ func mytest()  {
 	select {}
 }
 func demo() {
-		    log.Println("Starting...")
-		
-		    c := cron.New()
-		    //h := Task{"I Love You!"}
-		    //// 添加定时任务
-		    //c.AddJob("*/2 * * * * * ", h)
-		    //// 添加定时任务
-		    //c.AddFunc("*/5 * * * * * ", func() {
-			//        log.Println("hello word")
-			//    })
+	log.Println("Starting...")
 
-		   paser := cron.Parser{}
-		   s, err := paser.Parse("*/3 * * * * *")
-		   if err != nil {
-			       log.Println("Parse error")
-			   }
+	c := cron.New()
+	//h := Task{"I Love You!"}
+	//// 添加定时任务
+	//c.AddJob("*/2 * * * * * ", h)
+	//// 添加定时任务
+	//c.AddFunc("*/5 * * * * * ", func() {
+	//        log.Println("hello word")
+	//    })
 
-		   h2 := Task{"I Hate You!"}
-		   c.Schedule(s, h2)
-		   // 其中任务
-		   c.Start()
-		   // 关闭任务
-		   defer c.Stop()
-		   select {}
+	paser := cron.Parser{}
+	s, err := paser.Parse("*/3 * * * * *")
+	if err != nil {
+		log.Println("Parse error")
+	}
+
+	h2 := Task{"I Hate You!"}
+	c.Schedule(s, h2)
+	// 其中任务
+	c.Start()
+	// 关闭任务
+	defer c.Stop()
+	select {}
 }
+
 // 检查cron作业条目的下一次和上一次运行时间。
-func inspect(entries []cron.Entry)  {
+func inspect(entries []cron.Entry) {
 	//打印-即将执行的任务
 	go getNextJobs()
 }
 
-func getNextJobs()  {
+func getNextJobs() {
 	fmt.Println("next jobs start...")
 	entries := serviceCron.Entries() //getEntries(2)
 	fmt.Println(entries)
-	for k,v := range entries{
+	for k, v := range entries {
 		job := v.Job
 		nextTime := v.Next.Unix()
-		nextType := fmt.Sprintf("%T",job)
+		nextType := fmt.Sprintf("%T", job)
 		fmt.Println(nextType)
-		if nextType == "main.Task"{// main.Task 报名.变量类型名(结构体名，方法名)
-			fmt.Println(k,"job type ",job.(Task).Id,"===>",nextTime)
-		}else if nextType == "cron.FuncJob" {
-			fmt.Println(k,"job type ","func","===>",nextTime)
-		}else {
+		if nextType == "main.Task" { // main.Task 报名.变量类型名(结构体名，方法名)
+			fmt.Println(k, "job type ", job.(Task).Id, "===>", nextTime)
+		} else if nextType == "cron.FuncJob" {
+			fmt.Println(k, "job type ", "func", "===>", nextTime)
+		} else {
 			fmt.Println("不知道什么类型的job")
 		}
 	}
 	fmt.Println("next job end")
 }
 
-func getEntries(size int) []cron.Entry  {
+func getEntries(size int) []cron.Entry {
 
 	result := serviceCron.Entries()
 	if len(result) > size {
-		result  = result[:size]
+		result = result[:size]
 	}
 	return result
 }
 
-func func1()  {
+func func1() {
 	fmt.Println("func1 name1 running")
 }
