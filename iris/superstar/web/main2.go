@@ -1,9 +1,9 @@
 package main
 
 import (
-	"v5u.win/golearn/iris/superstar/bootstrap"
-	"v5u.win/golearn/iris/superstar/web/middleware/identity"
-	"v5u.win/golearn/iris/superstar/web/routes"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/bootstrap"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/web/middleware/identity"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/web/routes"
 )
 
 func main() {

@@ -1,9 +1,9 @@
 package services
 
 import (
-	"v5u.win/golearn/iris/superstar/dao"
-	"v5u.win/golearn/iris/superstar/datasource"
-	"v5u.win/golearn/iris/superstar/models"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/dao"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/datasource"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/models"
 )
 
 // interface 协议 接口

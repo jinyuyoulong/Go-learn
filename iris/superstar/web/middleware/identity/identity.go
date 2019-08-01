@@ -7,7 +7,7 @@ import (
 
 	"github.com/kataras/iris"
 
-	"v5u.win/golearn/iris/superstar/bootstrap"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/bootstrap"
 )
 
 // New returns a new handler which adds some headers and view data

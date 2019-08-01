@@ -2,10 +2,10 @@ package routes
 
 import (
 	"github.com/kataras/iris/mvc"
-	"v5u.win/golearn/iris/superstar/bootstrap"
-	"v5u.win/golearn/iris/superstar/services"
-	"v5u.win/golearn/iris/superstar/web/controllers"
-	"v5u.win/golearn/iris/superstar/web/middleware"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/bootstrap"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/services"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/web/controllers"
+	"github.com/jinyuyoulong/Go-learn/iris/superstar/web/middleware"
 )
 
 // Configure registers the necessary routes to the app.

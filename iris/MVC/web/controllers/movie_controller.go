@@ -3,9 +3,9 @@ package controllers
 import (
 	"errors"
 
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/datamodels"
+	"github.com/jinyuyoulong/Go-learn/iris/MVC/services"
 	"github.com/kataras/iris"
-	"v5u.win/golearn/iris/MVC/datamodels"
-	"v5u.win/golearn/iris/MVC/services"
 )
 
 // MovieController
