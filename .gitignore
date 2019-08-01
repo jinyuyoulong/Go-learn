@@ -13,3 +13,5 @@
 iris/projectapi/.vscode
 iris/projectweb/.vscode
 .vscode
+.idea
+.idea/*
