@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/datasource"
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/repositories"
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/services"
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/web/controllers"
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/web/middleware"
+	datasource2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/datasource"
+	repositories2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/repositories"
+	services2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/services"
+	controllers2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/web/controllers"
+	middleware2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/web/middleware"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
 )
@@ -16,7 +16,7 @@ func main() {
 	//加载模板文件
 	app.RegisterView(iris.HTML("./web/views", ".html"))
 	// 注册控制器
-	mvc.New(app.Party("/movies")).Handle(new(controllers.MovieController))
+	mvc.New(app.Party("/movies")).Handle(new(controllers2.MovieController))
 	//您还可以拆分您编写的代码以配置mvc.Application
 	//使用`mvc.Configure`方法，如下所示。
 	mvc.Configure(app.Party("/movies"), movies)
@@ -37,14 +37,14 @@ func main() {
 func movies(app *mvc.Application) {
 	//添加基本身份验证（admin：password）中间件
 	//用于基于/电影的请求。
-	app.Router.Use(middleware.BasicAuth)
+	app.Router.Use(middleware2.BasicAuth)
 	// 使用数据源中的一些（内存）数据创建我们的电影资源库。
-	repo := repositories.NewMovieRepository(datasource.Movies)
+	repo := repositories2.NewMovieRepository(datasource2.Movies)
 	// 创建我们的电影服务，我们将它绑定到电影应用程序的依赖项。
-	movieService := services.NewMovieService(repo)
+	movieService := services2.NewMovieService(repo)
 	app.Register(movieService)
 	//为我们的电影控制器服务
 	//请注意，您可以为多个控制器提供服务
 	//你也可以使用`movies.Party（relativePath）`或`movies.Clone（app.Party（...））创建子mvc应用程序
-	app.Handle(new(controllers.MovieController))
+	app.Handle(new(controllers2.MovieController))
 }

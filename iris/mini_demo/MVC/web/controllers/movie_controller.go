@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"errors"
+	datamodels2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/datamodels"
+	services2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/services"
 
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/datamodels"
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/services"
 	"github.com/kataras/iris"
 )
 
@@ -12,7 +12,7 @@ import (
 type MovieController struct {
 	//我们的MovieService，它是一个界面
 	//从主应用程序绑定。
-	Service services.MovieService
+	Service services2.MovieService
 }
 
 // 获取电影列表
@@ -26,25 +26,25 @@ type MovieController struct {
 //     return
 // }
 // 否则只返回数据模型
-func (c *MovieController) Get() (results []datamodels.Movie) {
+func (c *MovieController) Get() (results []datamodels2.Movie) {
 	return c.Service.GetAll()
 }
 
 //获取一部电影
 // Demo:
 // curl -i http://localhost:8080/movies/1
-func (c *MovieController) GetBy(id int64) (movie datamodels.Movie, found bool) {
+func (c *MovieController) GetBy(id int64) (movie datamodels2.Movie, found bool) {
 	return c.Service.GetByID(id) // it will throw 404 if not found.
 }
 
 // 用put请求更新一部电影
 // Demo:
 // curl -i -X PUT -F "genre=Thriller" -F "poster=@/Users/kataras/Downloads/out.gif" http://localhost:8080/movies/1
-func (c *MovieController) PutBy(ctx iris.Context, id int64) (datamodels.Movie, error) {
+func (c *MovieController) PutBy(ctx iris.Context, id int64) (datamodels2.Movie, error) {
 	// get the request data for poster and genre
 	file, info, err := ctx.FormFile("poster")
 	if err != nil {
-		return datamodels.Movie{}, errors.New("failed due form file 'poster' missing")
+		return datamodels2.Movie{}, errors.New("failed due form file 'poster' missing")
 	}
 	// 不需要文件所以关闭他
 	file.Close()

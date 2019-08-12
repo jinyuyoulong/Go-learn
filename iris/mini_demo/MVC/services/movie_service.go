@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/datamodels"
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/repositories"
+	datamodels2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/datamodels"
+	repositories2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/repositories"
 )
 
 // MovieService处理电影数据模型的一些CRUID操作。
@@ -12,40 +12,40 @@ import (
 //它是一个界面，它在任何地方都被用作界面
 //因为我们可能需要在将来更改或尝试实验性的不同域逻辑。
 type MovieService interface {
-	GetAll() []datamodels.Movie
-	GetByID(id int64) (datamodels.Movie, bool)
+	GetAll() []datamodels2.Movie
+	GetByID(id int64) (datamodels2.Movie, bool)
 	DeleteByID(id int64) bool
-	UpdatePosterAndGenreByID(id int64, poster string, genre string) (datamodels.Movie, error)
+	UpdatePosterAndGenreByID(id int64, poster string, genre string) (datamodels2.Movie, error)
 }
 type movieService struct {
-	repo repositories.MovieRepository
+	repo repositories2.MovieRepository
 }
 
 // NewMovieService返回默认 movie service.
-func NewMovieService(repo repositories.MovieRepository) MovieService {
+func NewMovieService(repo repositories2.MovieRepository) MovieService {
 	return &movieService{
 		repo: repo,
 	}
 }
 
 // GetAll 获取所有的movie.
-func (s *movieService) GetAll() []datamodels.Movie {
-	return s.repo.SelectMany(func(_ datamodels.Movie) bool {
+func (s *movieService) GetAll() []datamodels2.Movie {
+	return s.repo.SelectMany(func(_ datamodels2.Movie) bool {
 		return true
 	}, -1)
 }
 
 // GetByID 根据其ID返回一行。
-func (s *movieService) GetByID(id int64) (datamodels.Movie, bool) {
-	return s.repo.Select(func(m datamodels.Movie) bool {
+func (s *movieService) GetByID(id int64) (datamodels2.Movie, bool) {
+	return s.repo.Select(func(m datamodels2.Movie) bool {
 		return m.ID == id
 	})
 }
 
 // UpdatePosterAndGenreByID更新电影的海报和流派。
-func (s *movieService) UpdatePosterAndGenreByID(id int64, poster string, genre string) (datamodels.Movie, error) {
+func (s *movieService) UpdatePosterAndGenreByID(id int64, poster string, genre string) (datamodels2.Movie, error) {
 	// update the movie and return it.
-	return s.repo.InsertOrUpdate(datamodels.Movie{
+	return s.repo.InsertOrUpdate(datamodels2.Movie{
 		ID:     id,
 		Poster: poster,
 		Genre:  genre,
@@ -56,7 +56,7 @@ func (s *movieService) UpdatePosterAndGenreByID(id int64, poster string, genre s
 //
 //如果删除则返回true，否则返回false。
 func (s *movieService) DeleteByID(id int64) bool {
-	return s.repo.Delete(func(m datamodels.Movie) bool {
+	return s.repo.Delete(func(m datamodels2.Movie) bool {
 		return m.ID == id
 	}, 1)
 }

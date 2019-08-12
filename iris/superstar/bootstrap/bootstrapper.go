@@ -26,7 +26,7 @@ type Bootstrapper struct {
 }
 
 // New returns a new Bootstrapper.
-func New(appName, appOwner string, cfgs ...Configurator) *Bootstrapper {
+func New(appName, appOwner string, cfgs ...Configfurator) *Bootstrapper {
 	b := &Bootstrapper{
 		AppName:      appName,
 		AppOwner:     appOwner,
@@ -119,7 +119,7 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 // Bootstrap prepares our application.
 //
 // Returns itself.
-func (b *Bootstrapper) Bootstrap() *Bootstrapper {
+func (b *Bootstrapper)Bootstrap() *Bootstrapper {
 	// b.SetupViews("./golearn/iris/superstar/web/views")
 	// go run in ./web 目录下的 main.go文件
 	b.SetupViews("./views")
