@@ -2,10 +2,12 @@ package datasource
 
 // import "github.com/kataras/iris/_examples/mvc/overview/datamodels"
 
-import "github.com/jinyuyoulong/Go-learn/iris/MVC/datamodels"
+import (
+	datamodels2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/datamodels"
+)
 
 // Movies is our imaginary data source.
-var Movies = map[int64]datamodels.Movie{
+var Movies = map[int64]datamodels2.Movie{
 	1: {
 		ID:     1,
 		Name:   "Caseblance",

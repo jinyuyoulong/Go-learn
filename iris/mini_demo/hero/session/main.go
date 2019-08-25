@@ -1,9 +1,9 @@
 package main
 
 import (
+	routes2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/hero/session/routes"
 	"time"
 
-	"github.com/jinyuyoulong/Go-learn/iris/hero/session/routes"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/hero" // <- 导入
 	"github.com/kataras/iris/sessions"
@@ -26,7 +26,7 @@ func main() {
 	//将任何函数转换为iris Handler，使用独特的Iris超快速依赖注入来解析它们的输入参数
 	//用于服务或动态依赖，例如* sessions.Session，来自 sessionManager.Start(ctx)* sessions.Session)< - 它接受一个Context并返回
 	// something->这称为动态请求时依赖性。
-	indexHandler := hero.Handler(routes.Index)
+	indexHandler := hero.Handler(routes2.Index)
 	// Method: GET
 	// Path: http://localhost:8080
 	app.Get("/", indexHandler)

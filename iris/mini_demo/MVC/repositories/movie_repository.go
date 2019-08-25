@@ -2,12 +2,11 @@ package repositories
 
 import (
 	"errors"
+	datamodels2 "github.com/jinyuyoulong/Go-learn/iris/mini_demo/MVC/datamodels"
 	"sync"
-
-	"github.com/jinyuyoulong/Go-learn/iris/MVC/datamodels"
 )
 
-type Query func(datamodels.Movie) bool
+type Query func(datamodels2.Movie) bool
 
 const (
 	// ReadOnlyMode will RLock(read) the data .
@@ -18,17 +17,17 @@ const (
 
 type MovieRepository interface {
 	Exec(query Query, action Query, limit int, mode int) (ok bool)
-	Select(query Query) (movie datamodels.Movie, found bool)
-	SelectMany(query Query, limit int) (results []datamodels.Movie)
-	InsertOrUpdate(movie datamodels.Movie) (updateMovie datamodels.Movie, err error)
+	Select(query Query) (movie datamodels2.Movie, found bool)
+	SelectMany(query Query, limit int) (results []datamodels2.Movie)
+	InsertOrUpdate(movie datamodels2.Movie) (updateMovie datamodels2.Movie, err error)
 	Delete(query Query, limit int) (deleted bool)
 }
 type movieMemoryRepository struct {
-	source map[int64]datamodels.Movie
+	source map[int64]datamodels2.Movie
 	mu     sync.RWMutex
 }
 
-func NewMovieRepository(source map[int64]datamodels.Movie) MovieRepository {
+func NewMovieRepository(source map[int64]datamodels2.Movie) MovieRepository {
 	return &movieMemoryRepository{source: source}
 }
 
@@ -67,23 +66,23 @@ func (r *movieMemoryRepository) Exec(query Query, action Query, actionLimit int,
 //它实际上是一个简单但非常聪明的原型函数
 //自从我第一次想到它以来，我一直在使用它，
 //希望你会发现它也很有用。
-func (r *movieMemoryRepository) Select(query Query) (movie datamodels.Movie, found bool) {
-	found = r.Exec(query, func(m datamodels.Movie) bool {
+func (r *movieMemoryRepository) Select(query Query) (movie datamodels2.Movie, found bool) {
+	found = r.Exec(query, func(m datamodels2.Movie) bool {
 		movie = m
 		return true
 	}, 1, ReadOnlyMode)
 
 	//如果根本找不到的话,设置一个空的datamodels.Movie，
 	if !found {
-		movie = datamodels.Movie{}
+		movie = datamodels2.Movie{}
 	}
 	return
 }
 
 // SelectMany与Select相同但返回一个或多个datamodels.Movie作为切片。
 //如果limit <= 0则返回所有内容
-func (r *movieMemoryRepository) SelectMany(query Query, limit int) (results []datamodels.Movie) {
-	r.Exec(query, func(m datamodels.Movie) bool {
+func (r *movieMemoryRepository) SelectMany(query Query, limit int) (results []datamodels2.Movie) {
+	r.Exec(query, func(m datamodels2.Movie) bool {
 		results = append(results, m)
 		return true
 	}, limit, ReadOnlyMode)
@@ -92,7 +91,7 @@ func (r *movieMemoryRepository) SelectMany(query Query, limit int) (results []da
 
 // InsertOrUpdate将影片添加或更新到（内存）存储。
 // 返回新电影，如果有则返回错误。
-func (r *movieMemoryRepository) InsertOrUpdate(movie datamodels.Movie) (datamodels.Movie, error) {
+func (r *movieMemoryRepository) InsertOrUpdate(movie datamodels2.Movie) (datamodels2.Movie, error) {
 	id := movie.ID
 	if id == 0 { // Create new action
 		var lastID int64
@@ -120,11 +119,11 @@ func (r *movieMemoryRepository) InsertOrUpdate(movie datamodels.Movie) (datamode
 	//或者我们可以做替换：
 	// r.source [id] =电影
 	//并评论下面的代码;
-	current, exists := r.Select(func(m datamodels.Movie) bool {
+	current, exists := r.Select(func(m datamodels2.Movie) bool {
 		return m.ID == id
 	})
 	if !exists { //ID不是真实的，返回错误。
-		return datamodels.Movie{}, errors.New("failed to update a nonexistent movie")
+		return datamodels2.Movie{}, errors.New("failed to update a nonexistent movie")
 	}
 	// 或者注释这些和r.source [id] = m进行纯替换
 	if movie.Poster != "" {
@@ -140,7 +139,7 @@ func (r *movieMemoryRepository) InsertOrUpdate(movie datamodels.Movie) (datamode
 	return movie, nil
 }
 func (r *movieMemoryRepository) Delete(query Query, limit int) bool {
-	return r.Exec(query, func(m datamodels.Movie) bool {
+	return r.Exec(query, func(m datamodels2.Movie) bool {
 		delete(r.source, m.ID)
 		return true
 	}, limit, ReadWriteMode)
