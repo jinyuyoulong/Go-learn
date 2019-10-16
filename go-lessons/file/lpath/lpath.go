@@ -1,4 +1,4 @@
-package lpath
+package main
 
 import (
 	"log"
@@ -29,4 +29,19 @@ func GetCurrentDirectory() string {
 		log.Fatal(err)
 	}
 	return strings.Replace(dir, "\\", "/", -1) //将\替换成/
+}
+
+
+func GetCurrentFilepath() string {
+	//返回绝对路径  filepath.Dir(os.Args[0])去除最后一个元素的路径
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		log.Fatal(err)
+	}
+	return strings.Replace(dir, "\\", "/", -1) //将\替换成/
+}
+
+func main()  {
+	currentFilepath := GetCurrentFilepath()
+	println(currentFilepath)
 }

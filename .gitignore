@@ -14,3 +14,4 @@
 .vscode
 .idea
 .idea/*
+bin/*

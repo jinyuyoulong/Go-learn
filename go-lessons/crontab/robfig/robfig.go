@@ -22,8 +22,34 @@ func init() {
 }
 
 func main() {
+	// addFunc()
+	paserJob()
+	//secondFunc()
+	//schedule()
+}
 
-	demo()
+func secondFunc() {
+	c := cron.New(cron.WithSeconds())
+	// 此处space 多了一个 seconds 的解析符
+	space := "*/1 * * * * *"
+	c.AddFunc(space, func() {
+		fmt.Println("Every seconds action")
+	})
+
+	c.Start()
+	select {}
+}
+
+func paserJob() {
+	// 每分钟执行一次
+	space := "*/1 * * * *"
+	c := cron.New()
+
+	c.AddFunc(space, func() {
+		fmt.Println("Every minute action")
+	})
+	c.Start()
+	select {}
 }
 func mytest() {
 	task2 := Task{Id: "name2"}
@@ -65,30 +91,51 @@ func mytest() {
 	// 阻塞协程 不退出
 	select {}
 }
-func demo() {
+
+func addFunc() {
 	log.Println("Starting...")
 
 	c := cron.New()
-	//h := Task{"I Love You!"}
-	//// 添加定时任务
-	//c.AddJob("*/2 * * * * * ", h)
-	//// 添加定时任务
-	//c.AddFunc("*/5 * * * * * ", func() {
-	//        log.Println("hello word")
-	//    })
+	// 添加定时任务
+	c.AddFunc("* * * * * * ", func() {
+		log.Println("hello word")
+	})
+	c.Start()
+
+	select {}
+}
+
+func job() {
+	log.Println("Starting...")
+
+	c := cron.New()
+	h := Task{"I Love You!"}
+	// 添加定时任务
+	c.AddJob("*/2 * * * * * ", h)
+
+	// 其中任务
+	c.Start()
+	select {}
+	println("over.")
+}
+
+func schedule() {
+	log.Println("Starting...")
+
+	c := cron.New()
 
 	paser := cron.Parser{}
-	s, err := paser.Parse("*/3 * * * * *")
+	s, err := paser.Parse("*/1 * * * * *")
 	if err != nil {
 		log.Println("Parse error")
 	}
 
 	h2 := Task{"I Hate You!"}
 	c.Schedule(s, h2)
-	// 其中任务
 	c.Start()
 	// 关闭任务
 	defer c.Stop()
+
 	select {}
 }
 
