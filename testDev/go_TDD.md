@@ -1,5 +1,22 @@
 测试命令 `go test`
 
+辅助函数
+```
+// t.Helper() 需要告诉测试套件这个方法是辅助函数（helper）
+
+assertCorrectMessage := func(t *testing.T, got, want string) {
+		t.Helper()
+		if got != want {
+			t.Errorf("got '%q' want '%q'", got, want)
+		}
+	}
+t.Run("say hello to people", func(t *testing.T) {
+		got := Hello("World", "")
+		want := "Hello, World"
+		assertCorrectMessage(t, got, want)
+	})
+```
+
 显示详细测试信息
 go test -v
 
