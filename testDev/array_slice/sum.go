@@ -19,3 +19,12 @@ func SumAll(sliecs ...[]int) (sumall []int) {
 	}
 	return sumall
 }
+
+// SumAllTails 计算尾合集
+func SumAllTails(sliecs ...[]int) (sums []int) {
+	for _, msliec := range sliecs {
+		tail := msliec[1:]
+		sums = append(sums, Sum(tail))
+	}
+	return sums
+}
