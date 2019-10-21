@@ -19,7 +19,8 @@ type Triangle struct {
 }
 
 func (t Triangle) Area() float64 {
-	return t.Base * t.Height / 2
+	// return t.Base * t.Height / 2
+	return 0
 }
 
 type Shape interface {
