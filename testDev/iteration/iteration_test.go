@@ -1,6 +1,7 @@
 package iteration
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -29,3 +30,9 @@ func BenchmarkRepeat(b *testing.B) {
 
 //  说明运行一次这个函数需要 173 纳秒
 // 注意：基准测试默认是顺序运行的。
+
+func ExampleRepeat() {
+	repeat := Repeat("a")
+	fmt.Println(repeat)
+	// Output: aaaaa
+}

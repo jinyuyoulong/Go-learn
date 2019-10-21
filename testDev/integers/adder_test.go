@@ -14,6 +14,7 @@ func TestAddr(t *testing.T) {
 	}
 }
 
+// ExampleAdd 示例代码
 func ExampleAdd() {
 	sum := Add(1, 5)
 	fmt.Println(sum)
