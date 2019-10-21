@@ -31,11 +31,21 @@ func TestSumAll(t *testing.T) {
 }
 
 func TestSumAllTails(t *testing.T) {
-	got := SumAllTails([]int{1, 2}, []int{0, 9})
-	want := []int{2, 9}
-
-	// reflect.DeepEqual 该方法有点问题，不同类型的参数也可以编译通过，使用时比较简洁但需要注意
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("want '%v' but got '%v'", want, got)
+	checkSum := func(t *testing.T, got, want []int) {
+		// reflect.DeepEqual 该方法有点问题，不同类型的参数也可以编译通过，使用时比较简洁但需要注意
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("want '%v' but got '%v'", want, got)
+		}
 	}
+	t.Run("normal sum tails", func(t *testing.T) {
+		got := SumAllTails([]int{1, 2}, []int{0, 9})
+		want := []int{2, 9}
+		checkSum(t, got, want)
+
+	})
+	t.Run("nil slice sum tails", func(t *testing.T) {
+		got := SumAllTails([]int{}, []int{0, 9})
+		want := []int{0, 9}
+		checkSum(t, got, want)
+	})
 }

@@ -22,8 +22,14 @@ func SumAll(sliecs ...[]int) (sumall []int) {
 
 // SumAllTails 计算尾合集
 func SumAllTails(sliecs ...[]int) (sums []int) {
+
 	for _, msliec := range sliecs {
-		tail := msliec[1:]
+		var tail []int
+		if len(msliec) == 0 {
+			sums = append(sums, 0)
+			continue
+		}
+		tail = msliec[1:]
 		sums = append(sums, Sum(tail))
 	}
 	return sums
