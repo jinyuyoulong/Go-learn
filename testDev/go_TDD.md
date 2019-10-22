@@ -49,3 +49,12 @@ go test -cover
 
 // 使用类型别名具有可描述性
 type Bitcoin int
+
+### 未经检查的错误
+虽然 Go 编译器对你有很大帮助，但有时你仍然会忽略一些事情，错误处理有时会很棘手。
+有一种情况我们还没有测试过。要找到它，在一个终端中运行以下命令来安装 errcheck，这是许多可用的 linters（代码检测工具）之一。
+go get -u github.com/kisielk/errcheck
+然后，在你的代码目录中运行 errcheck .。
+你应该会得到如下类似的内容：
+wallet_test.go:17:18: wallet.Withdraw(Bitcoin(10))
+这告诉我们的是，我们没有检查在代码行中返回的错误。我的计算机上的这行代码与我们的正常 withdraw 的场景相对应，因为我们没有检查 Withdraw 是否成功，因此没有返回错误。
