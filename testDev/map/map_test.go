@@ -22,9 +22,12 @@ func TestSearch(t *testing.T) {
 }
 func TestAdd(t *testing.T) {
 	dic := Dictionary{}
-	dic.Add("4", "dd")
-	got, _ := dic.Search("4")
-	assertString(t, got, "dd")
+	word := "4"
+	definition := "dd"
+	err := dic.Add("4", "dd")
+	assertDefinition(t, dic, word, definition)
+	assertError(t, err, nil)
+
 }
 func assertError(t *testing.T, got, want error) {
 	t.Helper()
@@ -46,6 +49,6 @@ func assertDefinition(t *testing.T, dic Dictionary, word, definition string) {
 		t.Fatal("should find added word:", err)
 	}
 	if got == definition {
-		t.Errorf("got '%s' want '%s'", got, definition)
+		t.Errorf("have value for key got '%s' want '%s'", got, definition)
 	}
 }
