@@ -46,3 +46,6 @@ func ExampleAdd() {
 ```
 覆盖率命令
 go test -cover
+
+// 使用类型别名具有可描述性
+type Bitcoin int
