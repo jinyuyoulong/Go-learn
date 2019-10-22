@@ -9,18 +9,22 @@ func TestSearch(t *testing.T) {
 	// 由于 nil 指针异常，你永远不应该初始化一个空的 map 变量：
 	dic := Dictionary{"1": "fan", "2": "jin", "3": "long"}
 	t.Run("know", func(t *testing.T) {
-		got, err := Search(dic, "1")
+		got, _ := dic.Search("1")
 		want := "fan"
-		if err == nil {
-			assertString(t, got, want)
-		}
+		assertString(t, got, want)
 	})
 
 	t.Run("unknow", func(t *testing.T) {
-		_, got := Search(dic, "4")
+		_, got := dic.Search("4")
 		assertError(t, got, ErrNotFound)
 
 	})
+}
+func TestAdd(t *testing.T) {
+	dic := Dictionary{}
+	dic.Add("4", "dd")
+	got, _ := dic.Search("4")
+	assertString(t, got, "dd")
 }
 func assertError(t *testing.T, got, want error) {
 	t.Helper()
@@ -32,5 +36,16 @@ func assertString(t *testing.T, got, want string) {
 	t.Helper()
 	if got != want {
 		t.Errorf("want '%s' but got %s", want, got)
+	}
+}
+
+func assertDefinition(t *testing.T, dic Dictionary, word, definition string) {
+	t.Helper()
+	got, err := dic.Search(word)
+	if err != nil {
+		t.Fatal("should find added word:", err)
+	}
+	if got == definition {
+		t.Errorf("got '%s' want '%s'", got, definition)
 	}
 }
