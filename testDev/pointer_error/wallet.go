@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // 使用类型别名具有可描述性
 type Bitcoin int
@@ -15,8 +18,14 @@ func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+var InsufficientFoundsError = errors.New("cannot withdraw, insufficient funds")
+
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if w.balance < amount {
+		return InsufficientFoundsError
+	}
 	w.balance -= amount
+	return nil
 }
 
 // 让我们实现 Bitcoin 的 Stringer 方法
