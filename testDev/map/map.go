@@ -1,12 +1,10 @@
 package main
 
-import "errors"
-
 type Dictionary map[string]string
 
-var (
-	ErrNotFound  = errors.New("not find key in the dictionart")
-	ErrNotExists = errors.New("cannot add word because it already exists")
+const (
+	ErrNotFound  = DictionaryErr("not find key in the dictionart")
+	ErrNotExists = DictionaryErr("cannot add word because it already exists")
 )
 
 func (d Dictionary) Search(key string) (string, error) {
@@ -17,6 +15,11 @@ func (d Dictionary) Search(key string) (string, error) {
 	return value1, nil
 }
 
+type DictionaryErr string
+
+func (d DictionaryErr) Error() string {
+	return string(d)
+}
 func (d Dictionary) Add(key, v string) error {
 	_, err := d.Search(key)
 	switch err {
