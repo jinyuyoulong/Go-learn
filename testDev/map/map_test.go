@@ -29,6 +29,18 @@ func TestAdd(t *testing.T) {
 	assertError(t, err, nil)
 
 }
+
+func TestUpdate(t *testing.T) {
+	word := "3"
+	value := "dd"
+	dic := Dictionary{"1": "fan", "2": "jin", "3": "long"}
+
+	err := dic.Update(word, value)
+	if err != nil {
+		t.Errorf("update error is %s", err.Error())
+	}
+}
+
 func assertError(t *testing.T, got, want error) {
 	t.Helper()
 	if got != want {

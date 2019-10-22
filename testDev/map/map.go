@@ -30,6 +30,20 @@ func (d Dictionary) Add(key, v string) error {
 	default:
 		return err
 	}
+	d[key] = v
+	return nil
+}
 
+func (d Dictionary) Update(key, value string) error {
+	_, err := d.Search(key)
+	switch err {
+	case nil:
+		return ErrNotExists
+	case ErrNotFound:
+		return ErrNotFound
+	default:
+		return err
+	}
+	d[key] = value
 	return nil
 }
