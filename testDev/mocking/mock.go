@@ -11,13 +11,15 @@ import (
 const timeCount = 3
 const finalWorld = "GO!"
 
-func CountDown(w io.Writer, in Sleeper) {
+func CountDown(w io.Writer, sleeper Sleeper) {
 	for i := 0; i < timeCount; i++ {
-		in.Sleep()
-		fmt.Fprintf(w, "%d\n", timeCount-i)
-
+		sleeper.Sleep()
 	}
-	in.Sleep()
+	for i := timeCount; i > 0; i-- {
+		fmt.Fprintln(w, timeCount)
+	}
+
+	sleeper.Sleep()
 	fmt.Fprint(w, finalWorld)
 }
 
