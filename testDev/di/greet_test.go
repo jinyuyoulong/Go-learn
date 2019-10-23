@@ -7,6 +7,7 @@ import (
 
 func TestGreet(t *testing.T) {
 	b := bytes.Buffer{}
+	// byte 流向这里
 	Greet(&b, "fan")
 	got := b.String()
 	want := "hello, fan"

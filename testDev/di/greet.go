@@ -13,6 +13,7 @@ func Greet(b io.Writer, name string) {
 }
 
 func myGreetHandler(w http.ResponseWriter, r *http.Request) {
+	// byte 流向 http response writer
 	Greet(w, "fan")
 }
 func main() {
