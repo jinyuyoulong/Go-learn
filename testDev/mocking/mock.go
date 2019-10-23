@@ -8,15 +8,17 @@ import (
 )
 
 // 依赖注入 模拟
+const timeCount = 3
+const finalWorld = "GO!"
 
 func CountDown(w io.Writer) {
-	for i := 0; i < 3; i++ {
-		fmt.Fprintf(w, "%d\n", 3-i)
+	for i := 0; i < timeCount; i++ {
 		time.Sleep(time.Second * 1)
-		if i == 2 {
-			fmt.Fprint(w, "GO!")
-		}
+		fmt.Fprintf(w, "%d\n", timeCount-i)
+
 	}
+	time.Sleep(time.Second * 1)
+	fmt.Fprint(w, finalWorld)
 }
 func main() {
 	CountDown(os.Stdout)
