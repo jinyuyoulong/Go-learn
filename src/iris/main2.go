@@ -1,11 +1,10 @@
 package main
 
 import (
-	"github.com/kataras/iris"
-
-	"github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/middleware/recover"
-	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/middleware/logger"
+	"github.com/kataras/iris/v12/middleware/recover"
+	"github.com/kataras/iris/v12/mvc"
 )
 
 func main2() {
@@ -31,7 +30,7 @@ type ExampleController struct {
 func (c *ExampleController) Get() mvc.Result {
 	return mvc.Response{
 		ContentType: "text/html",
-		Text:        "<h1>Welcome</h1>",
+		Text:        "<h1>Welcome iris</h1>",
 	}
 }
 

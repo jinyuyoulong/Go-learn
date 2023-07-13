@@ -2,8 +2,8 @@
 应该有视图模型，客户端将能够看到的结构。例：
 
     import (
-        "github.com/kataras/iris/_examples/mvc/overview/datamodels"
-        "github.com/kataras/iris/context"
+        "github.com/kataras/iris/v12/_examples/mvc/overview/datamodels"
+        "github.com/kataras/iris/v12/context"
     )
     type Movie struct {
         datamodels.Movie

@@ -6,7 +6,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/jinyuyoulong/Go-learn/tempconv"
+	"github.com/jinyuyoulong/Go-learn/go-lessons/project-demos/tempconv"
 )
 
 func main() {

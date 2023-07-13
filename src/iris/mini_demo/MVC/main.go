@@ -6,8 +6,8 @@ import (
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/services"
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/web/controllers"
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/web/middleware"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/mvc"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 	)
 }
 
-//注意mvc.Application，它不是iris.Application。
+// 注意mvc.Application，它不是iris.Application。
 func movies(app *mvc.Application) {
 	//添加基本身份验证（admin：password）中间件
 	//用于基于/电影的请求。

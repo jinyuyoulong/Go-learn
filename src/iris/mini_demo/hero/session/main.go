@@ -1,12 +1,13 @@
 package main
 
 import (
-	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/hero/session/routes"
 	"time"
 
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/hero" // <- 导入
-	"github.com/kataras/iris/sessions"
+	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/hero/session/routes"
+
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/hero" // <- 导入
+	"github.com/kataras/iris/v12/sessions"
 )
 
 func main() {

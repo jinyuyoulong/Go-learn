@@ -9,7 +9,7 @@ import (
 	"sync"
 
 	_ "github.com/go-sql-driver/mysql" // 使用MySQL的隐式驱动
-	"github.com/go-xorm/xorm"
+	"xorm.io/xorm"
 	//  import cycle is not allowed
 )
 

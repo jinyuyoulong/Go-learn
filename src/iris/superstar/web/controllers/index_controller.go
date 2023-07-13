@@ -3,14 +3,15 @@
 package controllers
 
 import (
+	"log"
+
 	datasource2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/datasource"
 	models2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/models"
 	services2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/services"
-	"log"
 
-	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12/mvc"
 
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 )
 
 type IndexController struct {

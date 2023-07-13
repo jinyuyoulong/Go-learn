@@ -1,8 +1,6 @@
 package routes
 
-import (
-	"github.com/kataras/iris"
-)
+import "github.com/kataras/iris/v12"
 
 // GetFollowingHandler handles the GET: /following/{id}
 func GetFollowingHandler(ctx iris.Context) {

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 )
 
 func main() {

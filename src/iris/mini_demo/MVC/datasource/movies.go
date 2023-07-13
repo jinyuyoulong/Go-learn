@@ -1,6 +1,6 @@
 package datasource
 
-// import "github.com/kataras/iris/_examples/mvc/overview/datamodels"
+// import "github.com/kataras/iris/v12/_examples/mvc/overview/datamodels"
 
 import (
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/datamodels"

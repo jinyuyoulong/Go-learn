@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/jinyuyoulong/Go-learn/ch4/github"
+	"github.com/jinyuyoulong/Go-learn/go-lessons/project-demos/github"
 )
 
 func main() {
