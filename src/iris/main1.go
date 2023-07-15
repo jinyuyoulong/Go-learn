@@ -10,7 +10,7 @@ type User struct {
 	Age       int    `json:"age"`
 }
 
-func main1() {
+func main() {
 	app := iris.New()
 	app.RegisterView(iris.HTML("./views", "html").Reload(true))
 	app.OnErrorCode(iris.StatusInternalServerError, func(ctx iris.Context) {
