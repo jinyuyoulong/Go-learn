@@ -7,7 +7,7 @@ import (
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/web/controllers"
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/web/middleware"
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12/mvc"
 )
 
 func main() {

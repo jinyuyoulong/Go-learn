@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/hero" // <- 导入
-	"github.com/kataras/iris/sessions"
+	"github.com/kataras/iris/v12/hero" // <- 导入
+	"github.com/kataras/iris/v12/sessions"
 )
 
 func main() {

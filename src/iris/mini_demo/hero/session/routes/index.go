@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/sessions"
+	"github.com/kataras/iris/v12/sessions"
 )
 
 // Index将根据此用户/session 所执行的访问来增加一个简单的int版本。

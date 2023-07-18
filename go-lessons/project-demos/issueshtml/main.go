@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/jinyuyoulong/Go-learn/ch4/github"
+	"github.com/jinyuyoulong/Go-learn/go-lessons/project-demos/github"
 )
 
 var issueList = template.Must(template.New("issuelist").Parse(`

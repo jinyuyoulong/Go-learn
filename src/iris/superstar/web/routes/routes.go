@@ -5,7 +5,7 @@ import (
 	services2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/services"
 	controllers2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/web/controllers"
 	middleware2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/web/middleware"
-	"github.com/kataras/iris/mvc"
+	"github.com/kataras/iris/v12/mvc"
 )
 
 // Configure registers the necessary routes to the app.

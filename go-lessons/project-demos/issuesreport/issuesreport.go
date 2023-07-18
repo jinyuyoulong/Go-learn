@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/jinyuyoulong/Go-learn/ch4/github"
+	"github.com/jinyuyoulong/Go-learn/go-lessons/project-demos/github"
 )
 
 // 定义模板显示格式

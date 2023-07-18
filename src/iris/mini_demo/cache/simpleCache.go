@@ -3,7 +3,7 @@ package main
 import (
 "time"
 "github.com/kataras/iris"
-"github.com/kataras/iris/cache"
+"github.com/kataras/iris/v12/cache"
 )
 
 var markdownContents = []byte(`## Hello Markdown

@@ -13,20 +13,23 @@ import (
 
 	"time"
 
+	"gorm.io/gorm"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/go-xorm/xorm"
 )
 
 const DriverName = "mysql"
 const MasterDataSourceName = "root:333@tcp(127.0.0.1:3306)/superstar?charset=utf8"
 
-/**
+/*
+*
 CREATE TABLE `user_info` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '中文名',
-  `sys_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `sys_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后修改时间',
-  PRIMARY KEY (`id`)
+
+	`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	`name` varchar(50) NOT NULL DEFAULT '' COMMENT '中文名',
+	`sys_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+	`sys_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后修改时间',
+	PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 */
 type UserInfo struct {
@@ -56,7 +59,7 @@ func main() {
 
 // 连接到数据库
 func newEngin() *xorm.Engine {
-	engine, err := xorm.NewEngine(DriverName, MasterDataSourceName)
+	engine, err := gorm.NewEngine(DriverName, MasterDataSourceName)
 	if err != nil {
 		log.Fatal(newEngin, err)
 		return nil
