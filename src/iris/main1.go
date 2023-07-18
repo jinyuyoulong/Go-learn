@@ -1,8 +1,6 @@
 package main
 
-import (
-	"github.com/kataras/iris"
-)
+import "github.com/kataras/iris/v12"
 
 type User struct {
 	Username  string `json:"username"`
@@ -12,7 +10,7 @@ type User struct {
 	Age       int    `json:"age"`
 }
 
-func main1() {
+func main() {
 	app := iris.New()
 	app.RegisterView(iris.HTML("./views", "html").Reload(true))
 	app.OnErrorCode(iris.StatusInternalServerError, func(ctx iris.Context) {

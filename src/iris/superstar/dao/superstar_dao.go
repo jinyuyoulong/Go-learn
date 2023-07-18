@@ -2,18 +2,17 @@ package dao
 
 // data access object，DAO
 import (
+	models2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/models"
 	"log"
 
-	models2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/models"
-
-	"gorm.io/gorm"
+	"xorm.io/xorm"
 )
 
 type SuperstarDao struct {
-	engine *gorm.Engine
+	engine *xorm.Engine
 }
 
-func NewSuperstarDao(engine *gorm.Engine) *SuperstarDao {
+func NewSuperstarDao(engine *xorm.Engine) *SuperstarDao {
 
 	return &SuperstarDao{
 		engine: engine,

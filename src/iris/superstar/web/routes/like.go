@@ -1,8 +1,6 @@
 package routes
 
-import (
-	"github.com/kataras/iris"
-)
+import "github.com/kataras/iris/v12"
 
 // GetLikeHandler handles the GET: /like/{id}
 func GetLikeHandler(ctx iris.Context) {

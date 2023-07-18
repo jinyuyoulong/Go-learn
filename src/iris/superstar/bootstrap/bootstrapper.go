@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/securecookie"
 
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/middleware/logger"
 	"github.com/kataras/iris/v12/middleware/recover"
 	"github.com/kataras/iris/v12/sessions"
@@ -119,7 +119,7 @@ func (b *Bootstrapper) Configure(cs ...Configurator) {
 // Bootstrap prepares our application.
 //
 // Returns itself.
-func (b *Bootstrapper)Bootstrap() *Bootstrapper {
+func (b *Bootstrapper) Bootstrap() *Bootstrapper {
 	// b.SetupViews("./golearn/iris/superstar/web/views")
 	// go run in ./web 目录下的 main.go文件
 	b.SetupViews("./views")

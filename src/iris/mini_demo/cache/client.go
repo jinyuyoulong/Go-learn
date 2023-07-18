@@ -1,12 +1,13 @@
-//包main显示了如何使用`WriteWithExpiration`
-//基于“modtime”，如果If-Modified-Since的时间将于之前的对比，如果超出了refreshEvery的范围
-//它会刷新内容，否则会让客户端（99.9％的浏览器） 处理缓存机制，它比iris.Cache更快，因为服务器端
-//如果没有任何操作，无需将响应存储在内存中。
+// 包main显示了如何使用`WriteWithExpiration`
+// 基于“modtime”，如果If-Modified-Since的时间将于之前的对比，如果超出了refreshEvery的范围
+// 它会刷新内容，否则会让客户端（99.9％的浏览器） 处理缓存机制，它比iris.Cache更快，因为服务器端
+// 如果没有任何操作，无需将响应存储在内存中。
 package main
 
 import (
-	"github.com/kataras/iris"
 	"time"
+
+	"github.com/kataras/iris/v12"
 )
 
 const refreshEvery = 10 * time.Second

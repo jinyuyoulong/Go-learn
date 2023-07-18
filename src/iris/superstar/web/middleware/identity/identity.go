@@ -3,10 +3,11 @@ package identity
 // 中间件中的 identity 配置全局的变量
 
 import (
-	bootstrap2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/bootstrap"
 	"time"
 
-	"github.com/kataras/iris"
+	bootstrap2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/bootstrap"
+
+	"github.com/kataras/iris/v12"
 )
 
 // New returns a new handler which adds some headers and view data

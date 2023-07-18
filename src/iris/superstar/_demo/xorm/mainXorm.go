@@ -13,8 +13,8 @@ import (
 
 	"time"
 
-	"gorm.io/gorm"
 	_ "github.com/go-sql-driver/mysql"
+	"xorm.io/xorm"
 )
 
 const DriverName = "mysql"
@@ -59,7 +59,7 @@ func main() {
 
 // 连接到数据库
 func newEngin() *xorm.Engine {
-	engine, err := gorm.NewEngine(DriverName, MasterDataSourceName)
+	engine, err := xorm.NewEngine(DriverName, MasterDataSourceName)
 	if err != nil {
 		log.Fatal(newEngin, err)
 		return nil

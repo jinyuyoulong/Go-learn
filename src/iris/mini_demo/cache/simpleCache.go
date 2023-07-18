@@ -1,9 +1,10 @@
 package main
 
 import (
-"time"
-"github.com/kataras/iris"
-"github.com/kataras/iris/v12/cache"
+	"time"
+
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/cache"
 )
 
 var markdownContents = []byte(`## Hello Markdown
@@ -50,8 +51,8 @@ All features of Sundown are supported, including:
 
     [this is a link](https://github.com/kataras/iris) `)
 
-//不应在包含动态数据的处理程序上使用缓存。
-//缓存是静态内容的一个好的和必须的功能，即“关于页面”或整个博客网站，静态网站非常适合。
+// 不应在包含动态数据的处理程序上使用缓存。
+// 缓存是静态内容的一个好的和必须的功能，即“关于页面”或整个博客网站，静态网站非常适合。
 func main() {
 	app := iris.New()
 	app.Logger().SetLevel("debug")
@@ -67,6 +68,7 @@ func writeMarkdown(ctx iris.Context) {
 	println("Handler executed. Content refreshed.")
 	ctx.Markdown(markdownContents)
 }
+
 /* 请注意，`StaticWeb`默认使用浏览器的磁盘缓存
    因此，在任何StaticWeb调用之后注册缓存处理程序
    为了更快的解决方案，服务器不需要跟踪响应

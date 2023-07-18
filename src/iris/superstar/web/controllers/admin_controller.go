@@ -2,12 +2,13 @@ package controllers
 
 import (
 	"fmt"
-	models2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/models"
-	services2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/services"
 	"log"
 	"time"
 
-	"github.com/kataras/iris"
+	models2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/models"
+	services2 "github.com/jinyuyoulong/Go-learn/src/iris/superstar/services"
+
+	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/mvc"
 )
 

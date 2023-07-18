@@ -2,9 +2,10 @@ package controllers
 
 import (
 	"errors"
+
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/datamodels"
 	"github.com/jinyuyoulong/Go-learn/src/iris/mini_demo/MVC/services"
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 )
 
 // MovieController
@@ -17,19 +18,21 @@ type MovieController struct {
 // 获取电影列表
 // curl -i http://localhost:8080/movies
 // 如果您有敏感数据，这是正确的方法：
-// func (c *MovieController) Get() (results []viewmodels.Movie) {
-//     data := c.Service.GetAll()
-//     for _, movie := range data {
-//         results = append(results, viewmodels.Movie{movie})
-//     }
-//     return
-// }
+//
+//	func (c *MovieController) Get() (results []viewmodels.Movie) {
+//	    data := c.Service.GetAll()
+//	    for _, movie := range data {
+//	        results = append(results, viewmodels.Movie{movie})
+//	    }
+//	    return
+//	}
+//
 // 否则只返回数据模型
 func (c *MovieController) Get() (results []datamodels.Movie) {
 	return c.Service.GetAll()
 }
 
-//获取一部电影
+// 获取一部电影
 // Demo:
 // curl -i http://localhost:8080/movies/1
 func (c *MovieController) GetBy(id int64) (movie datamodels.Movie, found bool) {
